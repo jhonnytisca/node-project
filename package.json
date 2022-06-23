@@ -1,0 +1,46 @@
+{
+  "name": "rotw",
+  "version": "0.0.1",
+  "description": "Roomies Of The World",
+  "main": "server.js",
+  "author": "Carlos Cielo, Marco Villavicencio",
+  "dependencies": {
+    "agenda": "2.0.2",
+    "body-parser": "~1.0.0",
+    "crypto-js": "3.1.9-1",
+    "dotenv": "8.0.0",
+    "express": "3.4.4",
+    "express-cassandra": "2.3.0",
+    "firebase-admin": "7.0.0",
+    "iplocation": "6.1.0",
+    "jsonwebtoken": "^5.0.4",
+    "mkdirp": "0.5.1",
+    "mongoose": "3.6.2",
+    "morgan": "latest",
+    "node-schema-object": "^3.3.0",
+    "openpay": "latest",
+    "please-wait": "0.0.5",
+    "serve-static": "^1.11.2",
+    "server": "^1.0.37",
+    "socket.io": "^1.3.6",
+    "superagent": "latest",
+    "twilio": "3.68.0",
+    "use-strict": "latest",
+    "winston": "3.2.1",
+    "encoding": "^0.1.0",
+    "bufferutil": "^4.0.1",
+    "utf-8-validate": "^5.0.2"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhonnytisca/ROTW_node.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhonnytisca/ROTW_node/issues"
+  },
+  "homepage": "https://github.com/jhonnytisca/ROTW_node#readme"
+}
