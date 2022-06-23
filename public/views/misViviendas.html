@@ -1,0 +1,86 @@
+<section class="uk-section uk-section-small">
+        <div class="uk-container uk-container-small">
+
+                <div class="uk-grid" uk-grid>
+                   
+                    <!--Inicia panel derecho -->
+                    <div ng-controller="consultarViviendasByResponsableCtrl" class="uk-width-1-1@m">
+                                <div class="uk-child-width-1-3@l uk-child-width-1-2@m uk-text-center uk-grid-small" uk-grid>
+                                    <a href="#/altaVivienda">
+                                        <div class="uk-card uk-card-hover uk-card-default uk-card-body anadirv">
+                                            <figure class="figureViviendas">
+                                                    <span class="addicon" uk-icon="icon: plus-circle; ratio:2"></span>
+                                            </figure>                             
+                                        </div>
+                                        <div class="footerViviendas">
+                                                    <p>Añadir nueva vivienda</p>
+                                        </div>
+                                    </a>
+                                    <div  ng-repeat="x in viviendas" >
+                                        <a ng-click="loadDetalle(x.idVivienda);" class="viviendacard">
+                                            <div class="uk-background-cover casacard" style="background-image: url(../../../uploads/{{x.portada}});">
+                                                
+                                                    <div class="uk-card uk-card-large uk-card-body">
+                                                        <p>Ver anuncio</p>
+                                                    </div>
+                                            </div>
+                                            <div class="footerViviendas uk-width-1-1">
+                                                    <div class="uk-float-left" style="margin-top: 6px">
+                                                        <p class="nomarginb">{{x.titulo}} </p>
+                                                        <p class="nomargint uk-text-left">Inquilinos: <b>{{x.common.living.length}}</b></p>
+                                                    </div>
+
+                                                <div ng-if="x.redondeado!='S/N' " class="uk-navbar-container uk-float-right" style="margin-top: 5px">
+                                                        <div class="uk-navbar-center" style="background: #fff;">
+                                                            <ul class="uk-navbar-nav uk-width-1-1 uk-flex-around stars nomargint">
+                                                                <li class="uk-active">
+                                                                    <span uk-icon="icon: star; ratio: 0.5" ></span>
+                                                                </li>
+                                                                <li ng-if="x.redondeado >= 2" class="uk-active">
+                                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                                </li>
+                                                                <li ng-if="x.redondeado < 2">
+                                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                                </li>
+                                                                <li ng-if="x.redondeado >= 3" class="uk-active">
+                                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                                </li>
+                                                                <li ng-if="x.redondeado < 3">
+                                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                                </li>
+                                                                <li ng-if="x.redondeado >= 4" class="uk-active">
+                                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                                </li>
+                                                                <li ng-if="x.redondeado < 4">
+                                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                                </li>
+                                                                <li ng-if="x.redondeado >= 5" class="uk-active">
+                                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                                </li>
+                                                                <li ng-if="x.redondeado < 5">
+                                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                                </li>
+                                                                
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                            </div>
+                                        </a>
+                                        <a ng-click="loadDetallePrecio(x.idVivienda);" class="uk-button uk-button-primary uk-button-small"  uk-tooltip="Edita Precio y Metros Cuadrados"><i class="uk-icon-usd"></i></a>
+                                        <a ng-click="loadDetalleCarac(x.idVivienda);" class="uk-button uk-button-default uk-button-small"  uk-tooltip="Edita Características"><i class="uk-icon-wifi"></i></a>
+                                        <a ng-click="loadDetalleImages(x.idVivienda);" class="uk-button uk-button-secondary uk-button-small"  uk-tooltip="Edita Imágenes"><i class="uk-icon-photo"></i> </a>
+                                        <a ng-click="loadAddCuarto(x.idVivienda);" class="uk-button uk-button-success uk-button-small" uk-tooltip="Agregar cuarto"><i class="uk-icon-bed"></i> <i class="uk-icon-plus"></i></a>
+                                        <a ng-click="loadDetalleManage(x.idVivienda);" class="uk-button uk-button-small botonverde" uk-tooltip="Solicitudes"><i class="uk-icon-group"></i> <span ng-if="x.common.aspirants.length > 0"  class="globo">{{x.common.aspirants.length}}</span></a>
+                                        
+                                       
+                                        <hr>
+                                        
+                                    </div>
+                                 
+                                </div>
+                    </div>
+                </div>
+
+            </div>
+    </section>

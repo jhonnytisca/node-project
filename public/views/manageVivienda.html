@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2018 Carlos Cielo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+   Carlos Cielo - initial API and implementation and/or initial documentation
+-->
+
+<!--BOOTSTRAP FORMS--> 
+<link rel="stylesheet" href="css/bootstrap-formhelpers.min.css" />
+
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+        });
+        $('.rating-container .star').click(function () {
+            $('.rating-container .star').prop('src', 'img/star.svg');
+            $(this).prevAll('.star').addBack().prop('src', 'img/star2.jpg');
+            console.dir($(this)[0].attributes.value.value);
+            $("#ratingHouse").val($(this)[0].attributes.value.value);
+        });
+    });</script>
+
+<section ng-controller="manageViviendaCtrl" class="uk-section uk-section-small">
+    <div class="uk-container uk-container-small">
+
+        <div class="uk-grid uk-grid-small" uk-grid>
+            <!-- Termina panel izquierdo - Inicia panel derecho -->
+            <div class="uk-width-1-1">
+                <div class="sidebar">
+                    <div class="uk-child-width-1-2@m panelfield" uk-grid>
+                        <div class="uk-width-1-2">
+                            <h3 class="panel-title">Anfitrión</h3>
+                            <div>
+                                <div class="centrarv uk-text-right uk-align-center">
+                                    <img class="uk-display-inline-block uk-border-circle" src="{{responsable.avatar}}" width="76" height="76"alt=" ">
+                                    <div class="txt">
+                                        <div class="name nameanfi"> {{responsable.nombre}} {{responsable.primerApellido}} </div>
+                                        <div class="username useranfi">@{{responsable.nombreUsuario}}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div  class="uk-width-1-2@m">
+                            <h3 class="nomarginb">{{vivienda.titulo}}</h3>
+                            <a ng-click="loadDetalle(vivienda.idVivienda);" class="viviendacard">
+                                <div class="uk-background-cover casacard" style="background-image: url(../../../uploads/{{vivienda.portada}});">
+
+                                    <div class="uk-card uk-card-large uk-card-body">
+                                        <p>Ver más</p>
+                                    </div>
+                                </div>
+                                <div class="footerViviendas uk-width-1-1">
+                                    <div class="uk-float-left" style="margin-top: 6px">
+                                        <p class="nomarginb"></p>
+                                        <p class="nomargint uk-text-left">Rate:</p>
+                                    </div>
+
+                                    <div ng-if="house.rates.length > 0" class="uk-navbar-container uk-float-right" style="margin-top: 5px">
+                                        <div class="uk-navbar-center" style="background: #fff">
+                                            <ul class="uk-navbar-nav uk-width-1-1 uk-flex-around stars nomargint">
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 1.5" ></span>
+                                                </li>
+                                                <li ng-if="redondeado >= 2" class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                                </li>
+                                                <li ng-if="redondeado < 2">
+                                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                                </li>
+                                                <li ng-if="redondeado >= 3" class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                                </li>
+                                                <li ng-if="redondeado < 3">
+                                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                                </li>
+                                                <li ng-if="redondeado >= 4" class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                                </li>
+                                                <li ng-if="redondeado < 4">
+                                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                                </li>
+                                                <li ng-if="redondeado >= 5" class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                                </li>
+                                                <li ng-if="redondeado < 5">
+                                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--ROOMIES--> 
+                <div class="sidebar smallmargin">
+                    <h3>Mis inquilinos</h3>
+                    <div ng-if="roomies.length > 0" uk-slider="center:false" class="uk-position-relative">
+
+                        <div class="uk-position-relative uk-light">
+                            <ul  class="uk-slider-items uk-child-width-1-3@l uk-child-width-1-3@m uk-child-width-1-2@s">
+                                <li ng-repeat="x in roomies" ng-if="x.idUsuario != userSes.idUsuario">
+                                    <div class="centrarv centrarv-conoce">
+                                        <img class="uk-display-inline-block uk-border-circle" src="{{x.avatar}}" alt=" ">
+                                        <div class="txt" style="position: relative;">
+                                            <div class="name"><i class="glyphicon bfh-flag-{{x.nacionalidad}}"></i>@{{x.nombreUsuario}} </div>
+                                            <div class="username">{{x.mensaje}}</div>
+                                            <div class="username">
+                                                <i ng-repeat="y in x.caracter"  class="uk-icon uk-icon-image" style="background-image: url(images/caractR/{{y.path}});" uk-tooltip="{{y.description}}"></i>
+                                            </div>
+                                            <ul class="uk-navbar-nav uk-width-1-1 stars starsconoce nomargint">
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5" ></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li>
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                    <div class="uk-width-1-1">
+                                        <button ng-if="x.appli.status == 1"  ng-click="loadParamsConfirm(x.appli);" class="enviarsolicitud" type="button" name="button" uk-toggle="target: #modalConfirmacion" uk-tooltip="Entregar llaves"><i class="uk-icon-check-square"></i> Entrega llaves</button> 
+                                        <!--                                        <button ng-if="x.appli.status == 1"  ng-click="loadParamsConfirm(x.appli);" class="enviarsolicitud" type="button" name="button" uk-toggle="target: #modalConfirmacion" uk-tooltip="Califica Roomie"><i class="uk-icon-check-square"></i></button> -->
+
+
+                                    </div>
+
+
+
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                        <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+                    </div>
+                    <h4 ng-if="roomies.length == 0"><i class="uk-icon-warning"></i> No tienes inquilinos</h4>
+                </div>
+
+                <!--APLICACIONES-->
+                <div class="sidebar smallmargin">
+                    <h3>Aplicaciones pendientes:</h3>
+                    <div ng-if="aspirants.length > 0"  uk-slider="center:false" class="uk-position-relative">
+
+                        <div class="uk-position-relative uk-light">
+                            <ul class="uk-slider-items uk-child-width-1-3@l uk-child-width-1-3@m uk-child-width-1-2@s">
+                                <li ng-repeat="x in aspirants" ng-if="x.profile.idUsuario != userSes.idUsuario">
+                                    <div class="centrarv centrarv-conoce">
+                                        <img class="uk-display-inline-block uk-border-circle" src="{{x.profile.avatar}}" alt=" ">
+                                        <div class="txt" style="position: relative;">
+                                            <div class="name"><i class="glyphicon bfh-flag-{{x.profile.nacionalidad}}"></i>@{{x.profile.nombreUsuario}} </div>
+                                            <div class="username">{{x.profile.mensaje}}</div>
+
+                                            <ul class="uk-navbar-nav uk-width-1-1 stars starsconoce nomargint">
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5" ></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li>
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                            </ul>
+                                            <div class="username"><i ng-repeat="y in x.profile.caracter"  class="uk-icon uk-icon-image" style="background-image: url(images/caractR/{{y.path}});" uk-tooltip="{{y.description}}"></i></div>
+
+                                            <div ng-if="x.status == 1" class="uk-width-1-1">
+                                                <a ng-click="loadParams(x);" class="uk-button uk-button-secondary" uk-tooltip="Procesar" uk-toggle="target: #id-ban-solicitud" >Procesar</a>
+                                            </div>
+                                            <div ng-if="x.status == 2" class="uk-width-1-1">
+                                                <span><i class="uk-icon-clock-o"></i> ESPERANDO PAGO</span>
+                                            </div>
+                                            <div ng-if="x.status == 3" class="uk-width-1-1">
+                                                <span><i class="uk-icon-clock-o"></i> PAGO EXPIRADO</span>
+                                            </div>
+                                            <div ng-if="x.id_room != undefined">
+                                                <span class="manageVCuarto"><i class="uk-icon-home"></i>{{x.nombreCuarto}}</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                        <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+                    </div>
+
+                    <h4 ng-if="aspirants.length == 0"><i class="uk-icon-warning"></i> No tienes aplicaciones pendientes</h4>
+                </div>
+
+                <!--EX HABITANTES-->
+                <div class="sidebar smallmargin">
+                    <h3>Evaluaciones pendientes:</h3>
+                    <div ng-if="extenant.length > 0"  uk-slider="center:false" class="uk-position-relative">
+
+                        <div class="uk-position-relative uk-light">
+                            <ul class="uk-slider-items uk-child-width-1-3@l uk-child-width-1-3@m uk-child-width-1-2@s">
+                                <li ng-repeat="x in extenant" ng-if="x.profile.idUsuario != userSes.idUsuario">
+                                    <div class="centrarv centrarv-conoce">
+                                        <img class="uk-display-inline-block uk-border-circle" src="{{x.profile.avatar}}" alt=" ">
+                                        <div class="txt" style="position: relative;">
+                                            <div class="name"><i class="glyphicon bfh-flag-{{x.profile.nacionalidad}}"></i>@{{x.profile.nombreUsuario}} </div>
+                                            <div class="username">{{x.profile.mensaje}}</div>
+
+                                            <ul class="uk-navbar-nav uk-width-1-1 stars starsconoce nomargint">
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5" ></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li>
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                            </ul>
+                                            <div class="username"><i ng-repeat="y in x.profile.caracter"  class="uk-icon uk-icon-image" style="background-image: url(images/caractR/{{y.path}});" uk-tooltip="{{y.description}}"></i></div>
+
+
+
+                                        </div>
+
+                                    </div>
+                                    <div class="uk-width-1-1">
+                                        <a ng-click="cargaIdRoomie(x.profile.idUsuario, x._id);" class="uk-button uk-button-danger" uk-tooltip="Evaluar" uk-toggle="target: #idModalRateUser" ><i class="uk-icon-star"></i> Evaluar</a>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                        <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+                    </div>
+
+                    <h4 ng-if="extenant.length == 0"><i class="uk-icon-warning"></i> No tienes evaluaciones pendientes</h4>
+                </div>
+
+
+
+                <!-- Inician Cuarto -->
+
+                <div ng-if="vivienda.recamaras.length > 0" class="sidebar smallmargin">
+                    <div class="uk-child-width-1-1 panelfield" uk-grid>
+                        <div>
+                            <h3 class="panel-title">Cuartos:</h3>
+                        </div>
+                    </div>
+                    <div uk-grid>
+                        <div  class="uk-width-1-2@m mediumargin">
+                            <h3 class="nomarginb">Agrega cuarto:</h3>
+                            <a ng-click="loadAddCuarto(vivienda.idVivienda);">
+                                <div class="uk-card uk-card-hover uk-card-default uk-card-body anadirv">
+                                    <figure class="figureViviendas">
+                                        <span class="addicon" uk-icon="icon: plus-circle; ratio:2"></span>
+                                    </figure>                             
+                                </div>
+
+                            </a>
+                        </div>
+                        <div ng-repeat="x in vivienda.recamaras" class="uk-width-1-2@m mediumargin">
+
+                            <h3 class="nomarginb">{{x.titulo}}</h3>
+                            <a class="viviendacard" href="#">
+                                <div class="uk-background-cover casacard" style="background-image: url(../../../uploads/{{x.portada}});">
+
+                                    <div class="uk-card uk-card-large uk-card-body">
+                                        <p>Ver más</p>
+                                    </div>
+                                </div>
+                                <div class="footerViviendas uk-width-1-1">
+                                    <div class="uk-float-left" style="margin-top: 6px">
+                                        <p class="nomarginb"></p>
+                                        <p class="nomargint uk-text-left">Inquilinos: (1)</p>
+                                    </div>
+
+                                    <div class="uk-navbar-container uk-float-right" style="margin-top: 5px">
+                                        <div class="uk-navbar-center" style="background: #f2f2f2;">
+                                            <ul class="uk-navbar-nav uk-width-1-1 uk-flex-around stars nomargint">
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5" ></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li>
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </a>
+                            <!--<button class="enviarsolicitud" type="button" name="button">Calificar</button>--> 
+                            <a ng-click="loadDetallePrecio(x.idCuarto);" class="uk-button uk-button-primary uk-button-small"  uk-tooltip="Edita Precio y Metros Cuadrados"><i class="uk-icon-usd"></i></a>
+                            <a ng-click="loadDetalleCarac(x.idCuarto);" class="uk-button uk-button-default uk-button-small"  uk-tooltip="Edita Características"><i class="uk-icon-wifi"></i></a>
+                            <a ng-click="loadDetalleImages(x.idCuarto);" class="uk-button uk-button-secondary uk-button-small"  uk-tooltip="Edita Imágenes"><i class="uk-icon-photo"></i> </a>
+                            <!--<a ng-click="loadDetalleManage(x.idVivienda);" class="uk-button uk-button-medium botonverde" uk-tooltip="Solicitudes"><i class="uk-icon-group"></i></a>-->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar smallmargin">
+                    <h3 class="nomarginb">Ubicación</h3>
+                    <div id="map"></div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <!-- Termina panel derecho -->
+    </div>
+
+    <div id="id-ban-solicitud"  class="modal" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-custom">
+            <p class="uk-width-1-1 uk-button uk-button-default uk-modal-close cerrarmodal">X</p>
+
+            <div class="uk-modal-title">
+
+                <div class="textmodal">
+                    <div class="fecha">
+                        <figure class="uk-text-center" style="float: left;">
+                            <img src="{{currentApp.profile.avatar}}" alt="" width="100">
+                        </figure>
+                    </div>
+                    <div class="name">{{currentApp.profile.nombre}} {{currentApp.profile.primerApellido}}</div>
+                    <div class="username">@{{currentApp.profile.nombreUsuario}} </div>
+                </div>
+            </div>
+            <div class="uk-clearfix"></div>
+            <p class="modalp">
+                Información sobre el usuario @{{currentApp.profile.nombreUsuario}}
+            </p>
+
+            <table class="uk-table">
+
+                <tbody>
+                    <!--                        <tr>
+                                                <td width="35%"><i class="uk-icon-star"></i>  Características: </td>
+                                                <td width="65%">Lolo</td>
+                                            </tr>-->
+                    <tr>
+                        <td><i class="uk-icon-map-marker"></i> País: </td>
+                        <td><i class="glyphicon bfh-flag-{{currentApp.profile.nacionalidad}}"></i> </td>
+                    </tr>
+
+                    <!--                        <tr>
+                                                <td><i class="uk-icon-envelope"></i> Correo: </td>
+                                                <td> {{currentApp.profile.correoElectronico}}</td>
+                                            </tr>-->
+                    <tr>
+                        <td><i class="uk-icon-home"></i> Aplicando a: </td>
+                        <td>
+                            {{currentApp.nombreCuarto}} 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="uk-icon-list"></i> Descripción: </td>
+                        <td>
+                            {{currentApp.profile.descripcion}} 
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><i class="uk-icon-clock-o"></i> Edad: </td>
+                        <td>
+                            {{currentApp.profile.edad}} 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="uk-icon-list-alt"></i> Preferencias: </td>
+                        <td> 
+                            <div class="uk-child-width-1-5@m uk-child-width-1-3  uk-grid-small" uk-grid>
+
+                                <div  ng-repeat="y in currentApp.profile.caracter" >
+                                    <figure class=" modalCarac">
+                                        <img src="images/caractR/{{y.path}}" alt="">
+                                        <figcaption>{{y.description}}</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr ng-if="currentApp.profile.rates.length > 0">
+                        <td><i class="uk-icon-star"></i> Últimas evaluaciones: </td>
+                        <td> 
+                            <div ng-repeat="y in currentApp.profile.rates| limitTo:3"  class="uk-width-1-1@m">
+                                <div uk-grid>
+                                    <div class="centrarv uk-width-1-1">
+                                        <div class="txt">
+                                            <div class="name">@{{y.username}} </div>
+                                            <div class="fecharesena">{{y.created_at| date:"MM/dd/yyyy 'at' h:mma"}}</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <p class="uk-text-justify evaluacion"><b>{{y.stars}}<i class="uk-icon-star"></i></b> - {{y.content}}</p>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <p class="uk-text-right btn-modal">
+
+                <button ng-click="aceptaSolicitud(currentApp._id);" class="uk-button uk-button-success uk-modal-close" type="submit">Aceptar solicitud</button>
+                <button ng-click="rechazarAplicacion(vivienda.idVivienda, currentApp.profile.idUsuario);" class="uk-button uk-button-danger uk-modal-close " type="submit">Rechazar</button>
+            </p>
+        </div>
+    </div>
+
+
+    <!-- This is the modal -->
+    <div id="modalConfirmacion"  class="modal" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-custom">
+            <p class="uk-width-1-1 uk-button uk-button-default uk-modal-close cerrarmodal">X</p>
+            <div class="uk-modal-title">
+
+                <div class="textmodal">
+                    <div class="name">Confirmar entrega de llave</div>
+                </div>
+            </div>
+            <div class="uk-clearfix"></div>
+            <p class="modalp">
+                ¿Deseas confirmar llegada y entrega de llaves a tu inquilino?
+            </p>
+            <div>
+                <textarea ng-model="comentario" class="uk-margin-small-top uk-textarea" cols="10" rows="6" required placeholder="Comentario opcional sobre la entrega de llaves"></textarea>
+            </div> 
+            <p class="uk-text-right btn-modal">
+
+                <button ng-click="confirmar();" class="uk-button uk-button-success uk-modal-close" type="submit">Sí</button>
+                <button class="uk-button uk-button-danger uk-modal-close " type="submit">No</button>
+            </p>
+        </div>
+    </div>
+    <!-- FIN ventana modal -->
+
+    <!--MODAL RATE-->
+    <div id="idModalRateUser" class="modal" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-custom">
+
+            <p class="uk-width-1-1 uk-button uk-button-default uk-modal-close cerrarmodal">X</p>
+            <div class="uk-modal-title">Califica al roomie</div>
+
+
+            <form  class="uk-form" >
+
+
+
+                <div class="rating-container uk-navbar-nav uk-width-1-1 uk-flex-around stars nomargint" style="background: #f2f2f2">
+                    <img id="s1" class="star" src="img/star.svg" value="1">
+                    <img id="s2" class="star" src="img/star.svg" value="2">
+                    <img id="s3" class="star" src="img/star.svg" value="3">
+                    <img id="s4" class="star" src="img/star.svg" value="4">
+                    <img id="s5" class="star" src="img/star.svg" value="5">
+                    <input id="ratingHouse" type="hidden" value="0">
+                </div>
+
+                <div class="uk-clearfix"></div>
+                <div>
+                    <br>
+                    <textarea ng-model="content" class="uk-margin-small-top uk-textarea" cols="1" rows="6" placeholder="Escribe una opinión sobre el roomie"></textarea>
+                </div> 
+
+
+
+                <p class="uk-text-right btn-modal">
+
+                    <button ng-click="calificarRoomie()"  class="uk-button uk-button-success uk-modal-close" type="submit">Calificar</button>
+                </p>
+            </form>
+
+
+
+        </div>
+    </div>  
+
+
+</section>
+
+

@@ -1,0 +1,49 @@
+<section class="uk-section uk-section-small uk-background-cover uk-background-top-center" style="margin-top: -111px; padding-top: 145px;">
+
+    <div ng-controller="editCuartoCaracCtrl" class="uk-container uk-container-small">
+        <div class="uk-grid uk-grid-small uk-text-center">
+            <div class="uk-width-1-6@s"></div>
+            <div class="uk-width-2-3@s">
+                <h3 class="nomarginb">Edita características</h3>
+                <h4 class="infohome">Edite las características, servicios y áreas comunes de su vivienda</h4>
+            </div>
+            <div class="uk-width-expand"></div>
+        </div>
+        <form novalidate name="form"  ng-submit="edita(form, cuarto)"  enctype="multipart/form-data">
+            <div class="uk-grid">
+
+                <div class="uk-width-1-2@m">
+                 <fieldset>
+                        <legend><b>Características: </b></legend>
+                        <div class="my-overflow prestacionClass">
+                            <input class="prestaClass uk-radio" type="checkbox" value="armario.png" /><label class="furnitureLabel">Armario</label><br />
+                            <input class="prestaClass uk-radio" type="checkbox" value="banio_p.png" /><label class="furnitureLabel">Baño Privado</label><br />
+                            <input class="prestaClass uk-radio" type="checkbox" value="escritorio.png" /><label class="furnitureLabel">Escritorio</label><br />
+                            <input class="prestaClass uk-radio" type="checkbox" value="individual.png" /><label class="furnitureLabel">Cama Individual</label><br />
+                            <input class="prestaClass uk-radio" type="checkbox" value="matrimonial.png" /><label class="furnitureLabel">Cama Matrimonial</label><br />
+                            <input class="prestaClass uk-radio" type="checkbox" value="kingsize.png" /><label class="furnitureLabel">Cama King Size</label><br />
+                            <input class="prestaClass uk-radio" type="checkbox" value="minibar.png" /><label class="furnitureLabel">Mini Bar</label><br />
+                            <input class="prestaClass uk-radio" type="checkbox" value="tv.png" /><label class="furnitureLabel">TV</label><br />
+                            <input class="prestaClass uk-radio" type="checkbox" value="sofa.png" /><label class="furnitureLabel">Sofá</label><br/>
+                            <input class="prestaClass uk-radio" type="checkbox" value="sofa.png" /><label class="furnitureLabel">Sofá-cama</label><br/>
+                            <input class="prestaClass uk-radio" type="checkbox" value="aa.png" /><label class="furnitureLabel">Aire Acondicionado</label><br/>
+                            <input class="prestaClass uk-radio" type="checkbox" value="literas.png" /><label class="furnitureLabel">Literas</label><br/>
+                        </div>
+                    </fieldset> 
+                </div>
+
+            </div>
+
+            <div class="uk-grid">
+                <div class="uk-width-1-1">
+
+                    <input class="uk-align-center btn-anadir" id="coolbutton" name="submitName" type="submit" value="Actualizar" name="submitName"  />                        
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
+
+</section>

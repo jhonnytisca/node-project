@@ -1,0 +1,337 @@
+<script src="js/nouislider.min.js"></script>
+<link rel="stylesheet" href="css/nouislider.min.css" />
+
+<script>
+    var slider2 = document.getElementById('sliderDouble');
+    noUiSlider.create(slider2, {
+        start: [3000, 6000],
+        connect: true,
+        range: {
+            min: 0,
+            max: 20000
+        },
+        step: 500,
+        tooltips: true
+    });
+</script>
+
+
+<section class="uk-section uk-section-small uk-padding-remove">
+
+    <link href="css/gmaps.css" rel="stylesheet">
+    <script src="api/gmaps/mainMaps.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq-IC1vm5Y2BEHW2jnrnkXJEkzIfyRZG0&libraries=places,geometry" async defer></script> 
+
+
+    <div ng-controller="motorBusquedaMobileCtrl"  class="uk-container uk-container-large uk-padding-remove">
+        <div class="uk-grid" uk-grid style="margin-left: 0px !important; ">
+
+            <!--Opening of registration fields-->
+            <div class="uk-width-1-1@m uk-overflow-auto" style="padding-top: 10px; max-height: 100vh; padding-right: 10px !important;  padding-left: 10px !important;">
+                <h4 class="nomargint nomarginb">Compara y elige entre cientos de viviendas y Habitaciones</h4>
+
+                <hr>
+                <!--<input id="searchbar" class="uk-input" type="text" placeholder="Buscar...">-->
+
+
+                <ul class="uk-subnav uk-subnav-pill" uk-switcher>
+                    <li id="liSwitch1" > <a href="#">Filtros</a></li>
+                    <li id="liSwitch2"><a href="#">Resultado</a></li>
+                    <li id="liSwitch3"><a href="#">Mapa</a></li>
+                </ul>
+                <!-- <ul class="uk-subnav uk-subnav-pill" uk-switcher="">
+                                    <li aria-expanded="false" class=""> <a href="#">Filtros</a></li>
+                                    <li aria-expanded="true" class="uk-active"><a href="#">Resultado</a></li>
+                                    <li aria-expanded="false" class=""><a href="#">Mapa</a></li>
+                                </ul>-->
+
+
+                <ul class="uk-switcher uk-margin">
+                    <li id="liSwitcher1">
+                        <div class="uk-child-width-auto@m uk-child-width-1-1@s uk-child-width-1-1 uk-text-center uk-grid-small filtros smallmargin" uk-grid>
+
+                            <div class="uk-width-1-1@m">
+                                <p>Presupuesto:</p>
+                                <div id="sliderDouble" class="slider slider-primary"></div>
+                            </div>
+
+                            <div class="uk-width-1-1@m">
+                                <ul uk-accordion="multiple: true">
+                                    <li>
+                                        <a class="uk-accordion-title" href="#">Tipo Vivienda</a>
+                                        <div class="uk-accordion-content">
+
+
+                                            <ul class="uk-list uk-text-left custompanel">
+                                                <li><input class="tipoViviendaClass uk-checkbox" type="checkbox" value="1" checked><label>Casa</label></li>
+                                                <li><input class="tipoViviendaClass uk-checkbox" type="checkbox" value="3" checked><label>Departamento</label></li>
+                                                <li><input class="tipoViviendaClass uk-checkbox" type="checkbox" value="4" checked><label>Estudio</label></li>
+                                                <li><input class="tipoViviendaClass uk-checkbox" type="checkbox" value="6" checked><label>Homestead</label></li>
+                                                <li><input class="tipoViviendaClass uk-checkbox" type="checkbox" value="5" checked><label>Loft</label></li>
+                                                <li><input class="tipoViviendaClass uk-checkbox" type="checkbox" value="7" checked><label>Residencia</label></li>
+                                                <li><input class="tipoViviendaClass uk-checkbox" type="checkbox" value="2" checked><label>Sótano</label></li>
+
+                                            </ul>
+
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="uk-accordion-title" href="#">Servicios Incluidos</a>
+                                        <div class="uk-accordion-content">
+                                            <ul class="uk-list uk-text-left custompanel" >
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="agua.png"><label class="serviciosLabel">Agua</label></li>
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="aire.png"><label class="serviciosLabel">Aire acondicionado</label></li>
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="cable.png"><label class="serviciosLabel">Cable</label></li>
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="calefaccion.png"><label class="serviciosLabel">Calefacción</label></li>
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="calentador.png"><label class="serviciosLabel">Calentador</label></li>
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="calentadorsolar.png"><label class="serviciosLabel">Calentador solar</label></li>
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="circuito.png"><label class="serviciosLabel">Circuito Cerrado</label></li>
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="gas.png"><label class="serviciosLabel">Gas natural</label></li>
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="telefono.png"><label class="serviciosLabel">Telefono</label></li>
+
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="limpieza.png"><label class="serviciosLabel">Limpieza</label></li>
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="luz.png"><label class="serviciosLabel">Luz Eléctrica</label></li>
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="luzsolar.png"><label class="serviciosLabel">Luz solar</label></li>
+
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="netflix.png"><label class="serviciosLabel">Netflix</label></li>
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="basura.png"><label class="serviciosLabel">Recolección de basura</label></li>
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="seguridad.png"><label class="serviciosLabel">Seguridad</label></li>
+                                                <li><input class="uk-checkbox serviciosClass" type="checkbox" value="wifi.png"><label class="serviciosLabel">Wi-Fi</label></li>
+
+
+
+
+
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="uk-accordion-title" href="#">Características Vivienda</a>
+                                        <div class="uk-accordion-content">
+                                            <ul class="uk-list uk-text-left custompanel" >
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="amueblado.png" /><label class="caracLabel">Amueblado</label></li>
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="conperro.png"><label class="caracLabel">Con Perro</label></li>
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="congato.png"><label class="caracLabel">Con Gato</label></li>
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="eco.png"><label class="caracLabel">Eco Friendly</label></li>
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="fiesta.png"><label class="caracLabel">Fiesta</label></li>
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="gay.png"><label class="caracLabel">Gay Friendly</label></li>
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="noalcohol.png"><label class="caracLabel">No Alcohol</label></li>
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="nofiestas.png"><label class="caracLabel">No Fiestas</label></li>
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="nofumar.png"><label class="caracLabel">No Fumar</label></li>
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="parejas.png"><label class="caracLabel">Parejas</label></li>
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="pet.png"><label class="caracLabel">Pet Friendly</label></li>
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="solohombres.png"><label class="caracLabel">Sólo Hombres</label></li>
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="solochicas.png"><label class="caracLabel">Sólo Mujeres</label></li>
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="vegan.png" ><label class="caracLabel">Vegan Friendly</label></li>
+                                                <li><input class="caracClass uk-checkbox" type="checkbox" value="noche.png" /><label class="caracLabel">Visitas de noche</label></li>
+
+                                            </ul>    
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="uk-accordion-title" href="#">Preferencias Roomies</a>
+                                        <div class="uk-accordion-content">
+                                            <ul class="uk-list uk-text-left custompanel">
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="ambiental.png"><label>Ambiental</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="artista.png"><label> Artista</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="cinefilo.png"><label> Cinéfilo</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="cool.png"><label> Cool</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="congato.png" ><label> Con Gato</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="conperro.png"><label> Con Perro</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="deportista.png" ><label> Deportista</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="emprendedor.png" ><label>Emprendedor</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="zen.png"><label> Espiritual-Zen</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="estudiante.png" ><label> Estudiante</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="fiestero.png"> <label>Fiestero</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="fitness.png" /><label>Fitness</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="foodlover.png"><label> Food lover</label></li>                           
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="gamer.png"> <label>Gamer</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="gay.png"><label> Gay</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="godinez.png"><label> Godinez</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="healthy.png" /><label>Healthy</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="hipster.png"><label> Hipster</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="lector.png"><label> Lector</label></li>                            
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="petlover.png"> <label>Pet Lover</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="pulcro.png"> <label>Pulcro</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="serio.png"><label> Serio</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="sociable.png"><label> Sociable</label></li>
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="vegan.png" > <label>Vegano</label></li>
+
+
+                                                <li><input class="caracRClass uk-checkbox" type="checkbox" value="viajero.png" ><label> Viajero</label></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="uk-accordion-title" href="#">Áreas comunes</a>
+                                        <div class="uk-accordion-content">
+                                            <ul class="uk-list uk-text-left custompanel">
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="aa.png"><label class="amenidadesLabel">Aire Acondicionado</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="alberca.png"><label class="amenidadesLabel">Alberca</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="cancha.png"><label class="amenidadesLabel">Cancha</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="comedor.png"><label class="amenidadesLabel">Comedor</label> </li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="cocina.png"><label class="amenidadesLabel">Cocina</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="cuartomeditacion.png"><label class="amenidadesLabel">Cuarto Meditación</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="elevador.png"><label class="amenidadesLabel">Elevador</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="estacionamiento.png"><label class="amenidadesLabel">Estacionamiento</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="estudio.png"><label class="amenidadesLabel">Estudio</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="gym.png"><label class="amenidadesLabel">Gym</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="jardin.png"><label class="amenidadesLabel"> Jardin</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="parrilla.png"><label class="amenidadesLabel">Parrilla</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="patio.png"><label class="amenidadesLabel">Patio</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="portero.png"><label class="amenidadesLabel">Portero</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="roof.png"><label class="amenidadesLabel">Roof</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="sala.png"><label class="amenidadesLabel">Sala</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="salajuegos.png"><label class="amenidadesLabel">Sala de juegos</label></li>
+                                                <li><input class="amenidadesClass uk-radio" type="checkbox" value="salatv.png"><label class="amenidadesLabel">Sala de TV</label></li>
+
+
+
+                                            </ul></div>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                            <div class="uk-width-1-1@m">
+                                <br><br>
+                                <a id="buscarBoton" class="uk-button-danger btn-anadir" ng-click="filtrar();" >Buscar</a>
+                                <br>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="liSwitcher2">
+
+                        <div class="uk-child-width-1-3@l uk-child-width-1-1@m uk-text-center uk-grid-small mediumargin" uk-grid>
+                            <div ng-repeat="x in viviendas"  class="uk-position-relative">
+                                <!--                        <a class="fav" href="#">
+                                                            <span uk-icon="icon: heart; ratio: 1.5"></span>
+                                                        </a>-->
+                                <a ng-click="loadDetalle(x.idVivienda);" class="viviendacard" >
+                                    <div ng-switch="x.portada">
+                                        <div ng-switch-when="null">
+                                            <div class="uk-background-cover casacard" style="background-image: url(images/portada_default.png);">
+                                                <div class="uk-card uk-card-large uk-card-body">
+                                                    <p>Ver más</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-switch-default>
+                                            <div class="uk-background-cover casacard" style="background-image: url(../../../uploads/{{x.portada}});">
+                                                <div class="uk-card uk-card-large uk-card-body">
+                                                    <p>Ver más</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footerViviendas uk-width-1-1">
+                                        <div class="uk-float-left" style="margin-top: 6px">
+
+                                            <h3 ng-if="x.rentaCuarto" class="nomarginb habitacion uk-text-left">{{x.titulo}}</h3>
+                                            <h3 ng-if="!x.rentaCuarto" class="nomarginb uk-text-left">{{x.titulo}}</h3>
+                                            <p class="nomargint nomarginb uk-text-left">{{x.direccionGenerica}} | {{x.direccion}}</p>        
+
+                                            <p ng-if="x.rentaCuarto" class="categoriah nomargint nomarginb uk-text-left"><span>Categoría:</span> Vivienda por cuarto</p>
+                                            <p ng-if="!x.rentaCuarto" class="categoriav nomargint nomarginb uk-text-left"><span>Categoría:</span> Vivienda completa</p>
+
+                                            <p ng-if="x.rentaCuarto" class="categoriah nomargint nomarginb uk-text-left"><span>Costos desde:</span> ${{x.recamaras[0].precio}}.°° MXN</p>
+                                            <p ng-if="!x.rentaCuarto" class="categoriav nomargint nomarginb uk-text-left"><span>Costo:</span> ${{x.precio}}.°° MXN</p>
+
+
+
+                                            <ul class="uk-navbar-nav uk-width-1-1 stars nomargint">
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5" ></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li class="uk-active">
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                                <li>
+                                                    <span uk-icon="icon: star; ratio: 0.5"></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="uk-navbar-container uk-float-right" style="margin-top: 5px">
+                                            <div class="uk-navbar-center" style="background: #fff;">
+                                                <p class="uk-width-1-1 disponibilidadv nomargint nomarginb">Disponibilidad</p>
+                                                <p class="uk-width-1-1 nomargint uk-text-center"><i class="uk-icon uk-icon-image" style="background-image: url(images/icons/user.png);"></i> 2</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </li>
+                    <li id="liSwitcher3">
+
+                        <!--MAPA-->
+                        <div class="uk-width-1-1@m uk-padding-remove mapaDiv">
+                            <div > 
+                                <input  id="route" type="text" placeholder="Calle" disabled required hidden>
+                            </div> 
+                            <div > 
+                                <input  id="street_number" type="text" placeholder="No." disabled required hidden> 
+                            </div>
+                            <div >
+                                <input id="locality" type="text" placeholder="Ciudad" disabled required hidden>
+                            </div>
+                            <div > 
+                                <input   id="administrative_area_level_1" type="text" placeholder="Estado" disabled required hidden>
+                            </div>
+                            <div > 
+                                <input id="postal_code" type="text" placeholder="Código Postal" disabled required hidden>
+                            </div>
+                            <div > 
+                                <input  id="country" type="text" placeholder="País" disabled required hidden>
+                            </div>
+
+                            <input type="hidden" id="lat" value="">
+                            <input type="hidden" id="long" value="">
+                            <input type="hidden" id="idPlace" value="">
+
+                            <div>
+
+                                <input id="pac-input" class="controls" type="text"
+                                       placeholder="Búsqueda por ubicación">
+
+                                <!--<div id="type-selector" class="controls">-->
+                                <!--                        <input type="radio" name="type" id="changetype-all" checked="checked">
+                                                        <label for="changetype-all">Todo</label>-->
+
+                                <!--              <input type="radio" name="type" id="changetype-establishment">
+                                              <label for="changetype-establishment">Establecimientos</label>
+                                
+                                              <input type="radio" name="type" id="changetype-address">
+                                              <label for="changetype-address">Direcciones</label>
+                                
+                                              <input type="radio" name="type" id="changetype-geocode">
+                                              <label for="changetype-geocode">Geocodes</label>-->
+                            </div>
+
+                            <div id="mapBuscadorMob"></div>
+                        </div>
+
+
+                    </li>
+                </ul>
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+

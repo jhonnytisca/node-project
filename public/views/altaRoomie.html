@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2018 Carlos Cielo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+   Carlos Cielo - initial API and implementation and/or initial documentation
+-->
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>          
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+
+<link rel="stylesheet" href="css/image-picker.css" />
+<script src="js/image-picker.js"></script>
+<script src="js/nouislider.min.js"></script>
+<link rel="stylesheet" href="css/nouislider.min.css" />
+
+<script>
+    var slider2 = document.getElementById('sliderDouble');
+    noUiSlider.create(slider2, {
+        start: [3000, 6000],
+        connect: true,
+        range: {
+            min: 0,
+            max: 20000
+        },
+        step: 500,
+        tooltips: true
+    });</script>
+
+
+<!--BOOTSTRAP COUNTRIES-->
+<link rel="stylesheet" href="css/bootstrap-formhelpers.min.css" />
+<script type="text/javascript" src="js/bootstrap-formhelpers.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-formhelpers-countries.js"></script>
+
+<!--UTILS-->
+<script src="js/utils.js"></script>
+
+<link rel="stylesheet" href="css/calendarios.css" />
+<script src="js/phone/validNumber.js"></script>
+
+<script>
+    var listaCarac = "";
+    $(document).ready(function () {
+        $('#hiddenNac').val("");
+        $('#idNacimiento').on('change.bfhdatepicker', function (e) {
+            //Assign the value to Hidden Variable
+            $('#hiddenNac').val($('#idNacimiento').val());
+            console.log("Asignamos fecha a hidden ");
+        });
+        $(".image-picker").imagepicker({show_label: true});
+//        $("#avatar_hombre").hide();
+//        $("#avatar_mujer").hide();
+//
+//        $("#selectSexo").click(function () {
+//
+//            console.log($("#selectSexo option:selected").text());
+//
+//
+//            if ($("#selectSexo option:selected").val() === "M") {
+//
+//                $("#avatar_hombre").show();
+//                $("#avatar_mujer").hide();
+//            } else if ($("#selectSexo option:selected").val() === "F") {
+//                $("#avatar_mujer").show();
+//                $("#avatar_hombre").hide();
+//            }
+//
+//        });
+
+        $(".thumbnail").click(function () {
+
+            var tipoId = $(this).parent().parent().parent().parent().attr("id");
+            if (tipoId === "divAvatar") {
+                console.log("TIPO AVATAR");
+                document.getElementById("idAvatar").value = $(this).find("img").attr('src');
+                console.log("Cambia valor avatar  " + document.getElementById("idAvatar").value);
+            } else if (tipoId === "divCarac") {
+                console.log("TIPO CARAC");
+                listaCarac = $("#divCarac").find(".selected");
+            }
+
+        });
+
+
+
+
+//     $('#inputTele').intlTelInput({
+//    utilsScript: "/js/utils.js"
+//            });
+//    
+
+    });</script>
+
+
+
+<!--UPLOADER-->
+<link href="fine_uploader/css/fine-uploader-gallery.css" rel="stylesheet">
+<script src="fine_uploader/js/fine-uploader.js"></script>
+
+
+<!-- Fine Uploader Gallery template
+====================================================================== -->
+<script type="text/template" id="qq-template-gallery-1">
+    <div class="qq-uploader-selector qq-uploader qq-gallery" qq-drop-area-text="Arrastre fotos">
+    <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
+    <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
+    </div>
+    <div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
+    <span class="qq-upload-drop-area-text-selector"></span>
+    </div>
+    <div id="uploadButton" class="qq-upload-button-selector qq-upload-button">
+    <div>Subir Foto de Perfil</div>
+    </div>
+    <span class="qq-drop-processing-selector qq-drop-processing">
+    <span>Processing dropped files...</span>
+    <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
+    </span>
+    <ul class="qq-upload-list-selector qq-upload-list" role="region" aria-live="polite" aria-relevant="additions removals">
+    <li>
+    <span role="status" class="qq-upload-status-text-selector qq-upload-status-text"></span>
+    <div class="qq-progress-bar-container-selector qq-progress-bar-container">
+    <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-progress-bar-selector qq-progress-bar"></div>
+    </div>
+    <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
+    <div class="qq-thumbnail-wrapper">
+    <img class="qq-thumbnail-selector" qq-max-size="120" qq-server-scale>
+    </div>
+    <button type="button" class="qq-upload-cancel-selector qq-upload-cancel">X</button>
+    <button type="button" class="qq-upload-retry-selector qq-upload-retry">
+    <span class="qq-btn qq-retry-icon" aria-label="Retry"></span>
+    Retry
+    </button>
+
+    <div class="qq-file-info">
+    <div class="qq-file-name">
+    <span class="qq-upload-file-selector qq-upload-file"></span>
+    <span class="qq-edit-filename-icon-selector qq-edit-filename-icon" aria-label="Edit filename"></span>
+    </div>
+    <input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
+    <span class="qq-upload-size-selector qq-upload-size"></span>
+    <button type="button" class="qq-btn qq-upload-delete-selector qq-upload-delete">
+    <span class="qq-btn qq-delete-icon" aria-label="Delete"></span>
+    </button>
+    <button type="button" class="qq-btn qq-upload-pause-selector qq-upload-pause">
+    <span class="qq-btn qq-pause-icon" aria-label="Pause"></span>
+    </button>
+    <button type="button" class="qq-btn qq-upload-continue-selector qq-upload-continue">
+    <span class="qq-btn qq-continue-icon" aria-label="Continue"></span>
+    </button>
+    </div>
+    </li>
+    </ul>
+
+    <dialog class="qq-alert-dialog-selector">
+    <div class="qq-dialog-message-selector"></div>
+    <div class="qq-dialog-buttons">
+    <button type="button" class="qq-cancel-button-selector">Close</button>
+    </div>
+    </dialog>
+
+    <dialog class="qq-confirm-dialog-selector">
+    <div class="qq-dialog-message-selector"></div>
+    <div class="qq-dialog-buttons">
+    <button type="button" class="qq-cancel-button-selector">No</button>
+    <button type="button" class="qq-ok-button-selector">Yes</button>
+    </div>
+    </dialog>
+
+    <dialog class="qq-prompt-dialog-selector">
+    <div class="qq-dialog-message-selector"></div>
+    <input type="text">
+    <div class="qq-dialog-buttons">
+    <button type="button" class="qq-cancel-button-selector">Cancel</button>
+    <button type="button" class="qq-ok-button-selector">Ok</button>
+    </div>
+    </dialog>
+    </div>
+</script>
+
+
+<script>
+
+    var pathACList = [];
+    var galleryUploader = new qq.FineUploader({
+        element: document.getElementById("fine-uploader-gallery-b"),
+        template: 'qq-template-gallery-1',
+        request: {
+            endpoint: '/uploadsComunes',
+            params: {
+                tipo: "ROO"
+            }
+        },
+        thumbnails: {
+            placeholders: {
+                waitingPath: '/fine_uploader/placeholders/waiting-generic.png',
+                notAvailablePath: '/fine_uploader/placeholders/not_available-generic.png'
+            }
+        },
+        validation: {
+            allowedExtensions: ['jpeg', 'jpg', 'png'],
+            itemLimit: 1,
+            sizeLimit: 5120000 // 5000 kB = 5000 * 1024 bytes
+        },
+        callbacks: {
+            onDelete: function (id) {
+                // ...
+            },
+            onDeleteComplete: function (id, xhr, isError) {
+                //...
+            },
+            onComplete: function (id, name, xhr, responseJSON) {
+
+                console.log("RESPUESTA AL SUBIR IMAGEN ");
+                console.dir(responseJSON);
+                var respuesta = JSON.parse(responseJSON.response);
+                console.log(respuesta.name);
+                pathACList.push(respuesta.name);
+                console.dir(pathACList);
+            }
+        }
+
+    });</script>
+
+
+<section  class="uk-section uk-section-small uk-background-cover uk-background-top-center" style=" margin-top: -111px; padding-top: 145px;">
+    <div class="uk-container uk-container-small">
+        <div class="uk-grid uk-grid-small uk-text-center">
+            <div class="uk-width-1-6@s"></div>
+            <div class="uk-width-2-3@s">
+                <h3 class="nomarginb">¡Tus futuros roomies quieren conocerte!</h3>
+                <h4 class="infohome">¡Comienza una nueva aventura con Roomies of The World!</h4>
+            </div>
+            <div class="uk-width-expand"></div>
+        </div>
+        <div ng-controller="altaRoomieCtrl" class="uk-grid uk-grid-small">
+
+            <!-- Contact Form -->
+            <form novalidate name="form"  ng-submit="crea(form, user)"  class="uk-form uk-width-1-1 bx_formulario">
+                <div class="uk-grid uk-flex-middle uk-text-center" uk-grid>
+                    <div class="uk-width-1-4@s">
+                        <img class="uk-border-circle" src="images/im_perfil_example1.png" alt=" " />
+                    </div>
+                    <!--                    <div class="uk-width-1-4@s">
+                                            <div class="uk-margin">
+                                                <span class="uk-text-middle">Subir</span>
+                                                <div uk-form-custom>
+                                                    <input type="file">
+                                                    <span class="uk-link">foto</span>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                    <div class="uk-width-expand@s">
+                        <div style="margin-top: 74px;">
+                            <input name="nombreUsuario" ng-model="user.nombreUsuario" type="text" placeholder="@User Name" class="uk-input"  ng-blur="nombreUsuarioTouched = true" required />
+                        </div>
+                        <div class="bx_disponibilidad">
+                            <button ng-click="disponibilidad(user.nombreUsuario)" class="uk-align-center uk-align-right@s" type="button">Disponibilidad</button>
+                        </div>
+
+                        <div class="uk-align-center msjValidDiv"  ng-show="nombreUsuarioTouched">
+                            <span class="msjValid" ng-show="form.nombreUsuario.$invalid">Por favor ingresa un nombre de usuario.</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="uk-grid" uk-grid>
+                    <div class="uk-width-1-1@m">
+                        <input ng-model="user.nombre" ng-blur="$nombreTouched = true" type="text" name="nombre" placeholder="Nombre(s)" class="uk-input" required /> 
+                    </div>
+                    <div class="uk-align-center msjValidDiv" ng-show="$nombreTouched">
+                        <span class="msjValid" ng-show="form.nombre.$invalid">Por favor ingresa tu nombre.</span>
+                    </div>
+                </div>
+
+                <div class="uk-grid" uk-grid>
+                    <div class="uk-width-1-2@m">
+                        <input ng-model="user.primerApellido"  ng-blur="primerApellidoTouched = true"type="text" name="primerApellido" placeholder="Primer Apellido" class="uk-input" required/>
+
+                    </div>
+                    <div class="uk-align-center msjValidDiv"  ng-show="primerApellidoTouched">
+                        <span class="msjValid" ng-show="form.primerApellido.$invalid">Por favor ingresa tu primer apellido.</span>
+                    </div>
+
+                    <div class="uk-width-expand@m">
+                        <input ng-model="user.segundoApellido" type="text" name="segundoApellido" placeholder="Segundo Apellido" class="uk-input" />
+
+                    </div>
+                </div>
+                <div class="uk-grid" uk-grid>
+
+                    <div class="uk-width-expand@m">
+                        <input name="correo" ng-model="user.correoElectronico" class="uk-input" type="email" ng-blur="correoTouched = true" placeholder="Correo" value="{{user.email}}" required>
+
+                    </div>
+                    <div class="uk-align-center msjValidDiv" ng-show="correoTouched">
+                        <span class="msjValid" ng-show="form.correo.$invalid">Por favor ingresa un correo válido</span>
+                    </div>
+                </div>
+                <div class="uk-grid" uk-grid>
+                    <div class="uk-width-1-2@m">
+                        <input name="password" ng-model="user.password" class="uk-input" type="password" placeholder="Password" ng-blur="passwordTouched = true" required>
+
+                    </div>
+
+                    <div class="uk-align-center msjValidDiv" ng-show="passwordTouched">
+                        <span class="msjValid" ng-show="form.password.$invalid">Por favor ingresa una contraseña válida.</span>
+                    </div>
+
+                    <div class="uk-width-expand@m">
+                        <input name="confirmaPassword" class="uk-input" ng-model="user.confirmaPassword" type="password" placeholder="Confirma Password" ng-blur="confirmaPasswordTouched = true" required>
+
+                    </div>
+                    <div class="uk-align-center msjValidDiv" ng-show="confirmaPasswordTouched">
+                        <span class="msjValid" ng-show="form.confirmaPassword.$invalid">Por favor confirma la contraseña.</span>
+                        <span class="msjValid" ng-show="form.confirmaPassword.$valid && form.confirmaPassword.$viewValue !== form.password.$viewValue">La contraseña no coincide.</span>
+                    </div>
+                </div>
+
+                <div  class="uk-grid" uk-grid>
+                    <div class="uk-width-1-2@m" >
+                        <p>País de origen:</p>
+                        <div class="bfh-selectbox bfh-countries"  data-name="country" data-country="MX" data-flags="true">
+                            <input type="hidden" value="">
+                            <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+                                <span class="bfh-selectbox-option input-medium" data-option=""></span>
+                                <b class="caret"></b>
+                            </a>
+                            <div class="bfh-selectbox-options">
+                                <input type="text" class="bfh-selectbox-filter">
+                                <div role="listbox">
+                                    <ul role="option">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uk-width-1-2@m">
+                        <p>Fecha de Nacimiento:</p>
+                        <div  id="idNacimiento" class="bfh-datepicker" data-format="d/m/y" data-date="{{fecha18}}" data-min="01/01/1900" data-max="{{fecha18}}">
+                        </div> 
+                        <input id="hiddenNac" type="hidden" value=""> 
+                    </div>
+
+                    <div class="uk-width-1-1@m">
+                        <p>Presupuesto:</p>
+                        <div id="sliderDouble" class="slider slider-primary"></div>
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="uk-grid" uk-grid>
+                    <div class="uk-width-1-1@m">
+                        <textarea ng-model="user.descripcion" name="descripcion" class="uk-textarea" placeholder="Acerca de mí..." rows="10" maxlength="500"></textarea>
+                    </div>
+                    <div class="uk-width-1-1@m">
+                        <textarea ng-model="user.mensaje" name="mensaje" class="uk-textarea" placeholder="Mensaje a Roomies (Este mensaje lo verán tus futuros roomies)" rows="7" maxlength="200"></textarea>
+                    </div>
+
+
+                </div>
+
+
+                <div class="uk-grid" uk-grid>
+                    <div id="divAvatar" class="uk-width-1-2@m">
+
+                        <p>Sexo</p>
+                        <select class="form-control" id="selectSexo" ng-model="user.sexo">
+                            <option value="F">  Femenino  </option>
+                            <option value="M">  Masculino  </option>
+                            <option value="X">  Otro  </option>
+
+                        </select> 
+                        <br>
+
+                        <!--                        <p>Escoge el avatar con el que más te identifiques</p>
+                        
+                                                <div id="avatar_mujer"> 
+                                                    <select class="image-picker show-html">
+                                                        <option data-img-src="images/avatar/avatar_creativa.png"  data-img-alt="Page 1" value="1">  Creativa  </option>
+                                                        <option data-img-src="images/avatar/avatar_deportista_m.png" data-img-alt="Page 2" value="2">  Deportista  </option>
+                                                        <option data-img-src="images/avatar/avatar_godinez_m.png" data-img-alt="Page 5" value="5">  Godinez  </option>
+                                                        <option data-img-src="images/avatar/avatar_hipster_m.png" data-img-alt="Page 6"  value="6"> Hipster </option>
+                                                        <option data-img-src="images/avatar/avatar_gamer_m.png" data-img-alt="Page 6"  value="13"> Gamer </option>
+                                                        <option data-img-src="images/avatar/avatar_musico_m.png" data-img-alt="Page 6"  value="14"> Músico </option>
+                                                        <option data-img-src="images/avatar/avatar_fiestera.png" data-img-alt="Page 4" value="4">  Party Girl  </option>
+                                                        <option data-img-src="images/avatar/avatar_estudiante_m.png" data-img-alt="Page 3" value="3">  Estudiante  </option>
+                                                    </select>
+                                                </div> 
+                        
+                                                <div id="avatar_hombre"> 
+                                                    <select class="image-picker show-html">
+                                                        <option data-img-src="images/avatar/avatar_creativo.png" data-img-alt="Page 7" value="7">  Creativo  </option>
+                                                        <option data-img-src="images/avatar/avatar_godinez_h.png" data-img-alt="Page 11" value="11">  Godinez  </option>
+                                                        <option data-img-src="images/avatar/avatar_deportista_h.png" data-img-alt="Page 8" value="8">  Deportista  </option>
+                                                        <option data-img-src="images/avatar/avatar_estudiante_h.png" data-img-alt="Page 9" value="9">  Estudiante  </option>
+                                                        <option data-img-src="images/avatar/avatar_fiestero.png" data-img-alt="Page 10" value="10">  Party Boy  </option>
+                                                        <option data-img-src="images/avatar/avatar_hipster_h.png" data-img-alt="Page 12" value="12"> Hipster </option>
+                                                        <option data-img-src="images/avatar/avatar_gamer_h.png" data-img-alt="Page 6" value="15"> Gamer </option>
+                                                        <option data-img-src="images/avatar/avatar_musico_h.png" data-img-alt="Page 6" value="16"> Músico </option>
+                                                    </select>
+                                                </div>-->
+
+                        <input type="hidden" id="idAvatar" value="">
+                    </div>
+
+
+
+
+                    <div class="uk-width-1-2@m">
+                        <p>Teléfono</p>
+                        <div class="uk-grid" uk-grid>
+                            <div class="bfh-selectbox bfh-countries uk-width-1-4@m"  data-name="country_phone" data-country="MX" data-flags="true" onchange="updateCountryPhone()">
+                                <input type="hidden" value="" >
+                                <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+                                    <span class="bfh-selectbox-option input-medium" data-option=""></span>
+                                    <b class="caret"></b>
+                                </a>
+                                <div class="bfh-selectbox-options">
+                                    <input type="text" class="bfh-selectbox-filter">
+                                    <div role="listbox">
+                                        <ul role="option">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group uk-width-3-4@m">
+                                <input  name="phoneNumber" id="phoneNumber" size="25" class="form-control">
+                                <input  type="hidden" name="defaultCountry" id="defaultCountry" value="MX"/>
+                                <input type="hidden" name="carrierCode" id="carrierCode"/>
+                                <span class="input-group-addon">Tel</span>
+                            </div>
+
+                            <input type="hidden" id="output"/>
+                        </div>
+                    </div>
+                    <br>
+
+
+
+
+                    <div class='uk-width-1-1@m'>
+                        <div id="fine-uploader-gallery-b"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="uk-grid" uk-grid>
+                    <div id="divCarac" class="uk-width-1-1@m">
+
+                        <p>Escoge tus gustos y preferencias</p>
+
+                        <div id="idCaracteristicas"> 
+                            <select multiple="multiple" class="image-picker masonry show-html">
+                                <option data-img-src="images/caractR/emprendedor.png" data-img-alt="Page 1" value="1">  Emprendedor  </option>
+                                <option data-img-src="images/caractR/estudiante.png" data-img-alt="Page 2" value="2">  Estudiante  </option>
+                                <option data-img-src="images/caractR/viajero.png" data-img-alt="Page 9" value="9"> Viajero</option> 
+                                <option data-img-src="images/caractR/gamer.png" data-img-alt="Page 12" value="12"> Gamer </option>
+                                <option data-img-src="images/caractR/lector.png" data-img-alt="Page 8" value="8"> Lector </option>
+                                <option data-img-src="images/caractR/cinefilo.png" data-img-alt="Page 11" value="11"> Cinéfilo</option>
+                                <option data-img-src="images/caractR/sociable.png" data-img-alt="Page 10" value="10"> Sociable </option>
+                                <option data-img-src="images/caractR/deportista.png" data-img-alt="Page 7" value="7"> Deportista </option>
+                                <option data-img-src="images/caractR/godinez.png" data-img-alt="Page 4" value="4">  Godinez  </option>
+                                <option data-img-src="images/caractR/artista.png" data-img-alt="Page 13" value="13">  Artista  </option>
+                                <option data-img-src="images/caractR/ambiental.png" data-img-alt="Page 14" value="14">  Ambiental  </option>
+                                <option data-img-src="images/caractR/congato.png" data-img-alt="Page 15" value="15">  Con Gato  </option>
+                                <option data-img-src="images/caractR/conperro.png" data-img-alt="Page 16" value="16">  Con Perro  </option>
+                                <option data-img-src="images/caractR/cool.png" data-img-alt="Page 17" value="17">  Cool  </option>
+                                <option data-img-src="images/caractR/zen.png" data-img-alt="Page 18" value="18">  Espiritual - Zen  </option>
+                                <option data-img-src="images/caractR/fiestero.png" data-img-alt="Page 19" value="19">  Fiestero  </option>
+                                <option data-img-src="images/caractR/foodlover.png" data-img-alt="Page 20" value="20">  Food Lover  </option>
+                                <option data-img-src="images/caractR/gay.png" data-img-alt="Page 21" value="21">  Gay  </option>
+                                <option data-img-src="images/caractR/hipster.png" data-img-alt="Page 22" value="22">  Hipster  </option>
+                                <option data-img-src="images/caractR/petlover.png" data-img-alt="Page 23" value="23">  Pet Lover  </option>
+                                <option data-img-src="images/caractR/pulcro.png" data-img-alt="Page 24" value="24">  Pulcro  </option>
+                                <option data-img-src="images/caractR/serio.png" data-img-alt="Page 25" value="25">  Serio </option>
+                                <option data-img-src="images/caractR/vegan.png" data-img-alt="Page 26" value="26">  Vegano </option>        
+                                <option data-img-src="images/caractR/workaholic.png" data-img-alt="Page 27" value="27">  Workaholic </option>        
+                                <option data-img-src="images/caractR/fumador.png" data-img-alt="Page 28" value="28">  Fumador </option>        
+                                <option data-img-src="images/caractR/musico.png" data-img-alt="Page 29" value="29">  Músico </option>        
+                                <option data-img-src="images/caractR/healthy.png" data-img-alt="Page 30" value="30">  Healthy </option>        
+                                <option data-img-src="images/caractR/fitness.png" data-img-alt="Page 31" value="31">  Fitness </option>        
+
+                            </select>
+                        </div> 
+
+                        <input type="hidden" id="hiddenCarac" value="">
+                    </div>
+                </div>
+
+
+                <div class="uk-grid-medium uk-text-center" uk-grid>
+                    <div class="uk-width-1-1">
+                        <button id="botonSubmit" ng-disabled="form.$invalid" class="nomargint" type="submit" name="submitName" >Crear Perfil</button>
+                        <!--<input  ng-disabled="form.$invalid" type="submit" value="Registrarse" />-->
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+
+

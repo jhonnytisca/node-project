@@ -1,0 +1,722 @@
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>          
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--BOOTSTRAP FORMHELPERS-->
+<link rel="stylesheet" href="css/bootstrap-formhelpers.min.css" />
+<script type="text/javascript" src="js/bootstrap-formhelpers.min.js"></script>
+<link rel="stylesheet" href="css/calendarios.css" />
+
+
+<!--UPLOADER-->
+<link href="fine_uploader/css/fine-uploader-gallery.css" rel="stylesheet">
+<script src="fine_uploader/js/fine-uploader.js"></script>
+
+<!-- Fine Uploader Gallery template
+====================================================================== -->
+<script type="text/template" id="qq-template-gallery">
+    <div class="qq-uploader-selector qq-uploader qq-gallery" qq-drop-area-text="Arrastre foto">
+    <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
+    <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
+    </div>
+    <div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
+    <span class="qq-upload-drop-area-text-selector"></span>
+    </div>
+    <div id="uploadButton" class="qq-upload-button-selector qq-upload-button">
+    <div>Subir Fotos</div>
+    </div>
+    <span class="qq-drop-processing-selector qq-drop-processing">
+    <span>Processing dropped files...</span>
+    <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
+    </span>
+    <ul class="qq-upload-list-selector qq-upload-list" role="region" aria-live="polite" aria-relevant="additions removals">
+    <li>
+    <span role="status" class="qq-upload-status-text-selector qq-upload-status-text"></span>
+    <div class="qq-progress-bar-container-selector qq-progress-bar-container">
+    <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-progress-bar-selector qq-progress-bar"></div>
+    </div>
+    <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
+    <div class="qq-thumbnail-wrapper">
+    <img class="qq-thumbnail-selector" qq-max-size="120" qq-server-scale>
+    </div>
+    <button type="button" class="qq-upload-cancel-selector qq-upload-cancel">X</button>
+    <button type="button" class="qq-upload-retry-selector qq-upload-retry">
+    <span class="qq-btn qq-retry-icon" aria-label="Retry"></span>
+    Retry
+    </button>
+
+    <div class="qq-file-info">
+    <div class="qq-file-name">
+    <span class="qq-upload-file-selector qq-upload-file"></span>
+    <span class="qq-edit-filename-icon-selector qq-edit-filename-icon" aria-label="Edit filename"></span>
+    </div>
+    <input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
+    <span class="qq-upload-size-selector qq-upload-size"></span>
+    <button type="button" class="qq-btn qq-upload-delete-selector qq-upload-delete">
+    <span class="qq-btn qq-delete-icon" aria-label="Delete"></span>
+    </button>
+    <button type="button" class="qq-btn qq-upload-pause-selector qq-upload-pause">
+    <span class="qq-btn qq-pause-icon" aria-label="Pause"></span>
+    </button>
+    <button type="button" class="qq-btn qq-upload-continue-selector qq-upload-continue">
+    <span class="qq-btn qq-continue-icon" aria-label="Continue"></span>
+    </button>
+    </div>
+    </li>
+    </ul>
+
+    <dialog class="qq-alert-dialog-selector">
+    <div class="qq-dialog-message-selector"></div>
+    <div class="qq-dialog-buttons">
+    <button type="button" class="qq-cancel-button-selector">Close</button>
+    </div>
+    </dialog>
+
+    <dialog class="qq-confirm-dialog-selector">
+    <div class="qq-dialog-message-selector"></div>
+    <div class="qq-dialog-buttons">
+    <button type="button" class="qq-cancel-button-selector">No</button>
+    <button type="button" class="qq-ok-button-selector">Yes</button>
+    </div>
+    </dialog>
+
+    <dialog class="qq-prompt-dialog-selector">
+    <div class="qq-dialog-message-selector"></div>
+    <input type="text">
+    <div class="qq-dialog-buttons">
+    <button type="button" class="qq-cancel-button-selector">Cancel</button>
+    <button type="button" class="qq-ok-button-selector">Ok</button>
+    </div>
+    </dialog>
+    </div>
+</script>
+
+
+<script>
+    
+    var imgList = [];
+ 
+    var galleryUploader = new qq.FineUploader({
+        element: document.getElementById("fine-uploader-gallery"),
+        template: 'qq-template-gallery',
+        request: {
+            endpoint: '/uploads',
+            params: {
+                username: document.getElementById("user").value,
+                tipo: "REC"
+            }
+        },
+
+        thumbnails: {
+            placeholders: {
+                waitingPath: '/fine_uploader/placeholders/waiting-generic.png',
+                notAvailablePath: '/fine_uploader/placeholders/not_available-generic.png'
+            }
+        },
+        validation: {
+            allowedExtensions: ['jpeg', 'jpg', 'png'],
+            itemLimit: 3,
+            sizeLimit: 5120000 // 5000 kB = 5000 * 1024 bytes
+        },
+        callbacks: {
+            onDelete: function (id) {
+                // ...
+            },
+            onDeleteComplete: function (id, xhr, isError) {
+                //...
+            },
+            onComplete: function (id, name, xhr, responseJSON) {
+                
+                var imgObject= new Object();
+                imgObject.index=0;
+             
+                
+                console.log("RESPUESTA AL SUBIR IMAGEN REC");
+                console.dir(responseJSON);
+                var respuesta = JSON.parse(responseJSON.response);
+                console.log(respuesta.name);
+                imgObject.path= respuesta.name;
+               
+                document.getElementById("pathHidden").value = respuesta.name;
+                
+               
+                imgList.push(imgObject);
+                
+            }
+        }
+    });</script>
+
+
+<!-- Fine Uploader Gallery template
+====================================================================== -->
+<script type="text/template" id="qq-template-gallery-1">
+    <div class="qq-uploader-selector qq-uploader qq-gallery" qq-drop-area-text="Arrastre fotos">
+    <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
+    <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
+    </div>
+    <div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
+    <span class="qq-upload-drop-area-text-selector"></span>
+    </div>
+    <div id="uploadButton" class="qq-upload-button-selector qq-upload-button">
+    <div>Subir Fotos</div>
+    </div>
+    <span class="qq-drop-processing-selector qq-drop-processing">
+    <span>Processing dropped files...</span>
+    <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
+    </span>
+    <ul class="qq-upload-list-selector qq-upload-list" role="region" aria-live="polite" aria-relevant="additions removals">
+    <li>
+    <span role="status" class="qq-upload-status-text-selector qq-upload-status-text"></span>
+    <div class="qq-progress-bar-container-selector qq-progress-bar-container">
+    <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-progress-bar-selector qq-progress-bar"></div>
+    </div>
+    <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
+    <div class="qq-thumbnail-wrapper">
+    <img class="qq-thumbnail-selector" qq-max-size="120" qq-server-scale>
+    </div>
+    <button type="button" class="qq-upload-cancel-selector qq-upload-cancel">X</button>
+    <button type="button" class="qq-upload-retry-selector qq-upload-retry">
+    <span class="qq-btn qq-retry-icon" aria-label="Retry"></span>
+    Retry
+    </button>
+
+    <div class="qq-file-info">
+    <div class="qq-file-name">
+    <span class="qq-upload-file-selector qq-upload-file"></span>
+    <span class="qq-edit-filename-icon-selector qq-edit-filename-icon" aria-label="Edit filename"></span>
+    </div>
+    <input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
+    <span class="qq-upload-size-selector qq-upload-size"></span>
+    <button type="button" class="qq-btn qq-upload-delete-selector qq-upload-delete">
+    <span class="qq-btn qq-delete-icon" aria-label="Delete"></span>
+    </button>
+    <button type="button" class="qq-btn qq-upload-pause-selector qq-upload-pause">
+    <span class="qq-btn qq-pause-icon" aria-label="Pause"></span>
+    </button>
+    <button type="button" class="qq-btn qq-upload-continue-selector qq-upload-continue">
+    <span class="qq-btn qq-continue-icon" aria-label="Continue"></span>
+    </button>
+    </div>
+    </li>
+    </ul>
+
+    <dialog class="qq-alert-dialog-selector">
+    <div class="qq-dialog-message-selector"></div>
+    <div class="qq-dialog-buttons">
+    <button type="button" class="qq-cancel-button-selector">Close</button>
+    </div>
+    </dialog>
+
+    <dialog class="qq-confirm-dialog-selector">
+    <div class="qq-dialog-message-selector"></div>
+    <div class="qq-dialog-buttons">
+    <button type="button" class="qq-cancel-button-selector">No</button>
+    <button type="button" class="qq-ok-button-selector">Yes</button>
+    </div>
+    </dialog>
+
+    <dialog class="qq-prompt-dialog-selector">
+    <div class="qq-dialog-message-selector"></div>
+    <input type="text">
+    <div class="qq-dialog-buttons">
+    <button type="button" class="qq-cancel-button-selector">Cancel</button>
+    <button type="button" class="qq-ok-button-selector">Ok</button>
+    </div>
+    </dialog>
+    </div>
+</script>
+
+
+<script>
+
+    var pathACList = [];
+    var galleryUploader = new qq.FineUploader({
+        element: document.getElementById("fine-uploader-gallery-b"),
+        template: 'qq-template-gallery-1',
+        request: {
+            endpoint: '/uploadsComunes',
+            params: {
+                tipo: "AC"
+            }
+        },
+        thumbnails: {
+            placeholders: {
+                waitingPath: '/fine_uploader/placeholders/waiting-generic.png',
+                notAvailablePath: '/fine_uploader/placeholders/not_available-generic.png'
+            }
+        },
+        validation: {
+            allowedExtensions: ['jpeg', 'jpg', 'png'],
+            itemLimit: 5,
+            sizeLimit: 5120000 // 5000 kB = 5000 * 1024 bytes
+        },
+        callbacks: {
+            onDelete: function (id) {
+                // ...
+            },
+            onDeleteComplete: function (id, xhr, isError) {
+                //...
+            },
+            onComplete: function (id, name, xhr, responseJSON) {
+
+                console.log("RESPUESTA AL SUBIR IMAGEN ");
+                console.dir(responseJSON);
+                var respuesta = JSON.parse(responseJSON.response);
+                console.log(respuesta.name);
+                pathACList.push(respuesta.name);
+                console.dir(pathACList);
+            }
+        }
+
+    });</script>
+
+<script>
+
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46) {
+            return false;
+        }
+        return true;
+    }
+
+    $(document).ready(function () {
+
+        $("#myonoffswitch2").click(function () {
+            if ($('#myonoffswitch2').is(":checked"))
+            {
+                console.log("ESTA UNCHECADO");
+                $("#divRecamaras").hide();
+                $("#divPrecio").show();
+                $("#divDisponible").show();
+            } else {
+
+
+                $("#divRecamaras").show();
+                $("#divPrecio").hide();
+                $("#divDisponible").hide();
+            }
+
+        });
+        $('#idFechaInicio').on('change.bfhdatepicker', function (e) {
+            //Assign the value to Hidden Variable
+            $('#hiddenInicio').val($('#idFechaInicio').val());
+            console.log("Asignamos fecha inicio a hidden ");
+        });
+        $('#idFechaInicioC').on('change.bfhdatepicker', function (e) {
+            //Assign the value to Hidden Variable
+            $('#hiddenInicioC').val($('#idFechaInicioC').val());
+            console.log("Asignamos fecha inicio a hidden ");
+        });
+    });</script>    
+
+
+
+
+<link href="css/gmaps.css" rel="stylesheet">
+<script src="api/gmaps/mainMaps.js"></script>
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq-IC1vm5Y2BEHW2jnrnkXJEkzIfyRZG0&libraries=places&callback=initMap" async defer></script>--> 
+
+<script src="js/rooms.js"></script>
+
+<section class="uk-section uk-section-small uk-background-cover uk-background-top-center" style="margin-top: -111px; padding-top: 145px;">
+
+    <div ng-controller="altaViviendaCtrl" class="uk-container uk-container-small">
+
+        <div class="uk-width-1-1 uk-text-center">
+            <h3 class="nomarginb">Registro de vivienda:</h3>
+            <h4 class="infohome">Llene los datos solicitados para dar de alta su vivienda</h4>
+        </div>
+        <div class="uk-width-expand"></div>
+
+
+        <input type="hidden" id="user" value="{{user}}">
+        <!-- Contact Form -->
+        <form novalidate name="form" class="uk-form" ng-submit="crea(form, vivienda)"  enctype="multipart/form-data">
+
+
+            <div class="uk-width-1-1">
+                <input name="titulo" ng-model="vivienda.titulo" class="uk-input" type="text" placeholder="Título de vivienda" ng-blur="$tituloTouched = true" required maxlength="50">
+                <div ng-show="$tituloTouched">
+                    <span class="msjValid" ng-show="form.titulo.$invalid">Por favor ingresa un título.</span>
+                </div>
+                <br>
+            </div>
+
+
+
+            <hr class="mediumargin">
+            <div class="uk-grid uk-flex-bottom" uk-grid>
+                <div class="uk-width-3-4@m">
+                    <h3 class="nomarginb">Habitaciones individuales</h3>
+                    <p class="nomargint">Dejar activado si se desea rentar por cuarto. Desactivar si se desea rentar casa completa</p>
+                </div>
+                <div class="uk-width-1-4@m">
+                    <div class="onoffswitch uk-align-right">
+                        <input type="checkbox" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" >
+                        <label class="onoffswitch-label" for="myonoffswitch2">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="uk-width-3-4@m">
+                    <h3 class="nomarginb">Soy Roomie</h3>
+                    <p class="nomargint">Dejar activado si vives en esta casa.</p>
+                </div>
+                <div class="uk-width-1-4@m">
+                    <div class="onoffswitch uk-align-right">
+                        <input type="checkbox" name="onoffswitch3" class="onoffswitch-checkbox" id="myonoffswitch3" checked>
+                        <label class="onoffswitch-label" for="myonoffswitch3">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="uk-width-1-2@m">
+                    <div class="input-group">
+                        <input class="uk-input"  name="m2" ng-model="vivienda.m2"  ng-blur="$m2Touched = true" onkeypress="return isNumber(event)" type="text" placeholder="Metros Cuadrados Vivienda" required  maxlength="4">
+                        <span class="input-group-addon">m<sup>2</sup></span>
+                    </div>
+
+                    <div ng-show="$m2Touched">
+                        <span class="msjValid" ng-show="form.m2.$invalid">Por favor ingresa los metros cuadrados.</span>
+                    </div>
+                </div>
+
+                <div id="divPrecio" class="uk-width-1-2@m" style="display: none">
+                    <div class=" input-group">
+                        <span class="input-group-addon">$</span>
+                        <input name="precio "ng-model="vivienda.precio" class="uk-input"  ng-blur="$precioTouched = true" onkeypress="return isNumber(event)" type="text" placeholder="Precio Renta Vivienda Completa">
+                    </div>
+                    <div ng-show="$precioTouched">
+                        <span class="msjValid" ng-show="form.precio.$invalid">Por favor ingresa el precio.</span>
+                    </div>
+                </div>
+
+
+                <br>
+
+
+                <div class="uk-width-1-2@m">
+                    <header>
+                        <b>Tipo de vivienda:</b>
+                    </header>
+                    <select class="uk-select" ng-model="vivienda.idTipoVivienda" required>
+                        <option value="1" >Casa</option>
+                        <option value="2" >Sótano</option>
+                        <option value="3" >Departamento</option>
+                        <option value="4" >Estudio</option>
+                        <option value="5" >Loft</option>
+                        <option value="6" >Homestead</option>
+                        <option value="7" >Residencia</option>
+
+                    </select>
+                </div>  
+                <div class="uk-width-1-2@m">     
+
+                    <header>
+                        <b>Rango de edad:</b>
+                    </header>
+                    <select class="uk-select" ng-model="vivienda.rangoEdad" required>
+                        <option value="18+">18+</option>
+                        <option value="18 a 25">18 a 25</option>
+                        <option value="26 a 34">26 a 34</option>
+                        <option value="35 a 40">35 a 40</option>
+                        <option value="40+">40+</option>
+                    </select> 
+
+                </div>
+
+                <div class="uk-width-1-2@m">     
+
+                    <header>
+                        <b>Estancia mínima (meses):</b>
+                    </header>
+                    <select class="uk-select" ng-model="vivienda.minima" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select> 
+
+                </div>
+
+                <div class="uk-width-1-2@m">     
+
+                    <header>
+                        <b>Número de recámaras:</b>
+                    </header>
+
+                    <input name="noRec "ng-model="vivienda.noRec" class="uk-input"  onkeypress="return isNumber(event)" type="text" placeholder="Número de recámaras"  maxlength="3">
+
+
+                </div>
+
+                <div class="uk-width-1-2@m">     
+
+                    <header>
+                        <b>Número de baños:</b>
+                    </header>
+                    <input name="noBan "ng-model="vivienda.noBan" class="uk-input"  onkeypress="return isNumber(event)" type="text" placeholder="Número de Baños"  required maxlength="2" >
+
+
+                </div>
+                
+                
+                  <div class="uk-width-1-1">
+                    <fieldset data-uk-margin>
+                        <legend><b>Requisitos: </b></legend>
+                        <div class="my-overflow">
+                            <input class="requisitosClass uk-radio" type="checkbox" value="contrato.png"><label class="requisitosLabel">Contrato</label><br>
+                            <input class="requisitosClass uk-radio" type="checkbox" value="aval.png"><label class="requisitosLabel">Aval</label> <br>
+                            <input class="requisitosClass uk-radio" type="checkbox" value="deposito.png"><label class="requisitosLabel">Depósito de garantía</label> <br>
+                            <input class="requisitosClass uk-radio" type="checkbox" value="ine.png"><label class="requisitosLabel">INE o Pasaporte</label><br>
+                            <input class="requisitosClass uk-radio" type="checkbox" value="pruebacovid.png"><label class="requisitosLabel">Prueba COVID</label><br>
+                            <input class="requisitosClass uk-radio" type="checkbox" value="otro.png"><label class="requisitosLabel">Otro (Especificar en descripción)</label><br>
+
+                        </div>
+                    </fieldset>   
+                </div>
+
+             
+                
+                
+
+                <div class="uk-width-1-1">
+
+                    <div class="descripcionBody"><textarea class="txtdescripcion" ng-model="vivienda.detalle" name="descripcion" placeholder="Descripción" rows="6"  required maxlength="7000"></textarea></div>
+                </div>
+
+                <br>
+
+
+              
+
+
+                <div class="uk-width-1-3@m">
+
+                    <fieldset data-uk-margin>
+                        <legend><b>Áreas comunes/Amenidades: </b></legend>
+                        <div class="my-overflow">
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="centrolavado.png"><label class="amenidadesLabel">Centro  de lavado</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="cocina.png"><label class="amenidadesLabel">Cocina</label> <br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="comedor.png"><label class="amenidadesLabel">Comedor</label> <br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="jardin.png"><label class="amenidadesLabel"> Jardin</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="roof.png"><label class="amenidadesLabel">Roof</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="sala.png"><label class="amenidadesLabel">Sala</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="salajuegos.png"><label class="amenidadesLabel">Sala de juegos</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="salatv.png"><label class="amenidadesLabel">Sala de TV</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="alberca.png"><label class="amenidadesLabel">Alberca</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="gym.png"><label class="amenidadesLabel">Gym</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="estacionamiento.png"><label class="amenidadesLabel">Estacionamiento</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="cancha.png"><label class="amenidadesLabel">Cancha</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="estudio.png"><label class="amenidadesLabel">Estudio</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="parrilla.png"><label class="amenidadesLabel">Parrilla</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="portero.png"><label class="amenidadesLabel">Portero</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="elevador.png"><label class="amenidadesLabel">Elevador</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="aa.png"><label class="amenidadesLabel">Aire Acondicionado</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="cuartomeditacion.png"><label class="amenidadesLabel">Cuarto Meditación</label><br>
+
+                        </div>
+                    </fieldset>   
+
+
+                </div>  
+
+                <div class="uk-width-1-3@m">
+
+                    <fieldset>
+                        <legend><b>Servicios: </b></legend>
+                        <div class="my-overflow">
+
+                            <input class="serviciosClass uk-radio" type="checkbox" value="telefono.png"><label class="serviciosLabel">Telefono</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="cable.png"><label class="serviciosLabel">Cable</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="agua.png"><label class="serviciosLabel">Agua</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="luz.png"><label class="serviciosLabel">Luz Eléctrica</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="gas.png"><label class="serviciosLabel">Gas natural</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="calefaccion.png"><label class="serviciosLabel">Calefacción</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="limpieza.png"><label class="serviciosLabel">Limpieza</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="basura.png"><label class="serviciosLabel">Recolección de basura</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="wifi.png"><label class="serviciosLabel">Wi-Fi</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="aire.png"><label class="serviciosLabel">Aire acondicionado</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="calentadorsolar.png"><label class="serviciosLabel">Calentador solar</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="luzsolar.png"><label class="serviciosLabel">Luz solar</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="seguridad.png"><label class="serviciosLabel">Seguridad</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="calentador.png"><label class="serviciosLabel">Calentador</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="circuito.png"><label class="serviciosLabel">Circuito Cerrado</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="netflix.png"><label class="serviciosLabel">Netflix</label><br>
+
+                        </div>
+                    </fieldset>                                                         
+
+                </div>  
+
+                <div class="uk-width-1-3@m">
+
+                    <fieldset>
+                        <legend><b>Características: </b></legend>
+                        <div class="my-overflow">
+
+                            <input class="caracClass uk-radio" type="checkbox" value="gay.png" /><label class="caracLabel">Gay Friendly</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="vegan.png" /><label class="caracLabel">Vegan Friendly</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="nofumar.png" /><label class="caracLabel">No Fumar</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="parejas.png" /><label class="caracLabel">Parejas</label><br />
+                            <input class="caracClass uk-radio" type="checkbox" value="solochicas.png" /><label class="caracLabel">Mujeres</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="pet.png" /><label class="caracLabel">Pet Friendly</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="noalcohol.png" /><label class="caracLabel">No Alcohol</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="nofiestas.png" /><label class="caracLabel">No Fiestas</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="solohombres.png" /><label class="caracLabel">Hombres</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="eco.png" /><label class="caracLabel">Eco Friendly</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="conperro.png" /><label class="caracLabel">Con Perro</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="congato.png" /><label class="caracLabel">Con Gato</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="fiesta.png" /><label class="caracLabel">Fiesta</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="amueblado.png" /><label class="caracLabel">Amueblado</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="noche.png" /><label class="caracLabel">Visitas de noche</label><br>
+                        </div>
+                    </fieldset>                                                         
+
+                </div> 
+
+
+                <div id="divDisponible" class="uk-width-1-1@m"  style="display: none">
+                    <b>Disponible desde:</b>
+                    <div  id="idFechaInicio" class="bfh-datepicker" data-format="m/d/y" data-date="today" data-min="today" >
+                    </div> 
+                    <input id="hiddenInicio" type="hidden" value=""> 
+                </div> 
+
+
+
+                <div id="divRecamaras" >
+                    <p>Agregar cuarto (<b id="contadorCuarto">1</b>)</p>
+                    <input class="uk-button btn-anadir" type="button" value="+" onclick="addRow()"> 
+                    <br>
+                    <br>
+                    <div id="content">
+                        <div  class="uk-width-1-1@m">
+                            <legend><b>Primer Cuarto: </b></legend>
+                            <input class="roomTitulo uk-input" type="text" name="name" placeholder="Título Cuarto"  value="" required maxlength="50"/>
+                            <textarea class= "roomDescripcion uk-input" name="descripcion" placeholder="Descripción" rows="5" required maxlength="500"></textarea>
+                            <div class=" input-group">
+                                <span class="input-group-addon">$</span>
+                                <input class="roomPrecio uk-input" type="text" name="value" placeholder="Precio Renta Cuarto"  value=""  onkeypress="return isNumber(event)" required/>
+                            </div>
+                            <div class="input-group">
+                                <input class="roomM2 uk-input" type="text" name="value" placeholder="Metros Cuadrados "  value=""  onkeypress="return isNumber(event)" required maxlength="4"/>
+                                <span class="input-group-addon">m<sup>2</sup></span>
+                            </div>
+                            <fieldset>
+                                <legend><b>Características: </b></legend>
+                                <div class="my-overflow prestacionClass">
+                                    <input class="prestaClass uk-radio" type="checkbox" value="armario.png" />Armario<br />
+                                    <input class="prestaClass uk-radio" type="checkbox" value="banio_p.png" />Baño Privado<br />
+                                    <input class="prestaClass uk-radio" type="checkbox" value="escritorio.png" />Escritorio<br />
+                                    <input class="prestaClass uk-radio" type="checkbox" value="individual.png" />Cama Individual<br />
+                                    <input class="prestaClass uk-radio" type="checkbox" value="matrimonial.png" />Cama Matrimonial<br />
+                                    <input class="prestaClass uk-radio" type="checkbox" value="kingsize.png" />Cama King Size<br />
+                                    <input class="prestaClass uk-radio" type="checkbox" value="minibar.png" />Mini Bar<br />
+                                    <input class="prestaClass uk-radio" type="checkbox" value="tv.png" />TV<br />
+                                    <input class="prestaClass uk-radio" type="checkbox" value="sofa.png" />Sofá<br/>
+                                    <input class="prestaClass uk-radio" type="checkbox" value="sofa.png" />Sofá-cama<br/>
+                                    <input class="prestaClass uk-radio" type="checkbox" value="aa.png" />Aire Acondicionado<br/>
+                                    <input class="prestaClass uk-radio" type="checkbox" value="literas.png" />Literas<br/>
+                                </div>
+                            </fieldset>  
+                            <br>
+                            <div >
+                                <b>Disponible desde:</b>
+                                <div  id="idFechaInicioC" class="bfh-datepicker" data-format="m/d/y" data-date="today" data-min="today" >
+                                </div> 
+                                <input id="hiddenInicioC" class="fechaRoomClass" type="hidden" value=""> 
+
+
+                            </div> 
+                            <input class="roomPath" id="pathHidden" type="hidden" value="" />
+                            <div>
+                                <br>
+                                <b>Máximo 3 fotos </b>
+                                <div id="fine-uploader-gallery"></div>
+                            </div>
+                            <hr class="divisoria">
+                            <br><br><br><br>
+                        </div>    
+                    </div>
+
+                </div>
+
+
+
+                <div class="uk-width-1-1">
+                    <header>
+                        <b>Sube las fotos de las áreas comunes (como máximo 5 jpg,png)</b>
+                    </header>
+                    <div id="fine-uploader-gallery-b"></div>
+
+                </div>
+
+                <br>
+                <header>
+                    <b>Utilice el MAPA para encontrar la dirección de la vivienda</b>
+                    <p>introduzca la direccíón en el mapa, los campos se llenarán automáticamente</p>
+                    <b>La dirección debe llenar los 6 campos, de lo contrario no será válida</b>
+                </header>
+                <div class="uk-grid">
+
+
+
+                    <div class="uk-width-1-2@m"> 
+                        <input class="uk-input field" id="route" type="text" placeholder="Calle" disabled required>
+                        <input class="uk-input field" id="street_number" type="text" placeholder="No." disabled required> 
+                        <input class="uk-input field" id="locality" type="text" placeholder="Ciudad" disabled required>
+                    </div> 
+
+                    <div class="uk-width-1-2@m"> 
+                        <input class="uk-input field" id="administrative_area_level_1" type="text" placeholder="Estado" disabled required>
+                        <input class="uk-input field" id="postal_code" type="text" placeholder="Código Postal" disabled>
+                        <input class="uk-input field" id="country" type="text" placeholder="País" disabled required>
+                    </div>
+
+
+                    <input type="hidden" id="lat" value="">
+                    <input type="hidden" id="long" value="">
+                    <input type="hidden" id="idPlace" value="">
+
+                    <div class="uk-width-1-1">
+
+                        <input id="pac-input" class="controls" type="text"
+                               placeholder="Ingresa la dirección de la vivienda">
+
+                        <div id="map"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="uk-grid-medium" uk-grid>
+                    <div class="uk-width-1-1 uk-text-center">
+                        <input ng-disabled="form.$invalid" class="uk-align-center btn-anadir" id="coolbutton" name="submitName" type="submit" value="Registrar Vivienda" />
+
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+
+
+    </div>
+</section>
+
+

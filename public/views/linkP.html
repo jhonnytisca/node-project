@@ -1,0 +1,55 @@
+
+<section  class="uk-section uk-section-small uk-background-cover uk-background-top-center" style=" margin-top: -111px; padding-top: 145px;">
+    <div class="uk-container uk-container-small">
+        <div class="uk-grid uk-grid-small uk-text-center">
+            <div class="uk-width-1-6@s"></div>
+            <div class="uk-width-2-3@s">
+                <h3 class="nomarginb">Reestablecer</h3>
+                <h4 class="infohome">Introduce tu nueva contraseña</h4>
+            </div>
+            <div class="uk-width-expand"></div>
+        </div>
+        <div ng-controller="resetPassCtrl" class="uk-grid uk-grid-small">
+
+            <!-- Contact Form -->
+            <form novalidate name="form"  ng-submit="enviar(form, user)"  class="uk-form uk-width-1-1 bx_formulario">
+
+
+
+
+                <div class="uk-grid" uk-grid>
+                    <div class="uk-width-1-2@m">
+                        <input name="password" ng-model="user.password" class="uk-input" type="password" placeholder="Password" ng-blur="passwordTouched = true" required>
+                        <div class="uk-align-center msjValidDiv" ng-show="passwordTouched">
+                            <span class="msjValid" ng-show="form.password.$invalid">Por favor ingresa una contraseña válida.</span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="uk-width-expand@m">
+                        <input name="confirmaPassword" class="uk-input" ng-model="user.confirmaPassword" type="password" placeholder="Confirma Password" ng-blur="confirmaPasswordTouched = true" required>
+                        <div class="uk-align-center msjValidDiv" ng-show="confirmaPasswordTouched">
+                            <span class="msjValid" ng-show="form.confirmaPassword.$invalid">Por favor confirma la contraseña.</span>
+                            <span class="msjValid" ng-show="form.confirmaPassword.$valid && form.confirmaPassword.$viewValue !== form.password.$viewValue">La contraseña no coincide.</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="uk-grid-medium uk-text-center" uk-grid>
+                    <div class="uk-width-1-1">
+                        <button id="botonSubmit" ng-disabled="form.$invalid" class="nomargint" type="submit" name="submitName" >Reestablecer</button>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+
+

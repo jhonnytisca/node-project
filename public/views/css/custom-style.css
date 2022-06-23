@@ -1,0 +1,1441 @@
+/* ESTILOS PERSONALIZADOS */
+/*** Inicia importación de fuentes personalizadas ***/
+
+@font-face {
+    font-family: 'Gotham-Book';
+    src: url('../fonts/Gotham-Book.eot?#iefix') format('embedded-opentype'),  
+        url('../fonts/Gotham-Book.otf')  format('opentype'),
+        url('../fonts/Gotham-Book.woff') format('woff'),
+        url('../fonts/Gotham-Book.ttf')  format('truetype'),
+        url('../fonts/Gotham-Book.svg#Gotham-Book') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'Gotham-Medium';
+    src: url('../fonts/Gotham-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Gotham-Medium.otf')  format('opentype'),
+        url('../fonts/Gotham-Medium.woff') format('woff'),
+        url('../fonts/Gotham-Medium.ttf')  format('truetype'),
+        url('../fonts/Gotham-Medium.svg#Gotham-Medium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'Gotham-Bold';
+    src: url('../fonts/Gotham-Bold.eot?#iefix') format('embedded-opentype'),  
+        url('../fonts/Gotham-Bold.otf')  format('opentype'),
+        url('../fonts/Gotham-Bold.woff') format('woff'), 
+        url('../fonts/Gotham-Bold.ttf')  format('truetype'), 
+        url('../fonts/Gotham-Bold.svg#Gotham-Bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'GothamUltra';
+    src: url('../fonts/GothamUltra.eot?#iefix') format('embedded-opentype'),  
+        url('../fonts/GothamUltra.otf')  format('opentype'),
+        url('../fonts/GothamUltra.woff') format('woff'), 
+        url('../fonts/GothamUltra.ttf')  format('truetype'), 
+        url('../fonts/GothamUltra.svg#GothamUltra') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/*** Termina importación de fuentes personalizadas ***/
+body{
+    font-family: 'Gotham-Book'  !important;
+    text-decoration: none  !important; 
+}
+h2.slogan {
+    font-family: 'GothamUltra' !important;
+    font-size: 2.3em  !important;
+    color: #513cf9  !important;
+}
+h3 {
+    font-family: 'GothamUltra' !important;
+    font-size: 1.7em  !important;
+    color: #513cf9  !important;
+}
+h4 {
+    font-family: 'Gotham-Bold'  !important;
+    font-size: 1.1em  !important;
+    color: #ffb930  !important;
+}
+
+h4.tipoViviendaTextClass {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.nomarginb {
+    margin-bottom: 0!important;
+}
+.nomargint {
+    margin-top: 0!important;
+}
+.smallmargin {
+    margin-top: 15px!important;
+}
+.mediumargin {
+    margin-top: 30px!important;
+}
+/*** Estilos del menú ***/
+
+.uk-navbar-nav>li>a, .uk-navbar-dropdown-nav>li>a {
+    color: #fff;
+    font-family: 'Gotham-Medium';
+    text-transform: capitalize;
+    font-size: 16px !important;
+}
+.uk-navbar-nav>li>a:hover, .uk-navbar-dropdown-nav>li>a:hover, .uk-navbar-nav>li:hover>a, .uk-navbar-nav>li>a.uk-open, .uk-navbar-nav>li>a:focus {
+    color: #ffb930;
+}
+.uk-navbar-dropdown {
+    width: inherit;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    padding-left: 15px;
+    margin-top: 0;
+}
+
+/*** Terminan estilos del menú ***/
+/*** Estilos de la lista de la segunda sección de Home ***/
+.features {
+    font-family: 'Gotham-Bold';
+    margin: 0px auto; 
+    padding: 0 0 35px;
+    list-style: none;
+    max-width: 700px;
+    color: #fff;
+    line-height: 130%;
+}
+.features li{
+    display: inline-block;
+    margin: 0px 5px;
+}
+.features li:before{
+    content: ' + ';
+    color: #513cf9;
+}
+
+/*** Estilos de la tercera sección de Home ***/
+
+.infohome {
+    margin-top: 0;
+}
+.customcard {
+    border-radius: 20px;
+    padding-left: 25px!important;
+    padding-top: 100px!important;
+    padding-bottom: 25px!important;
+}
+.customcard .uk-label {
+    padding: 0;
+    background: none;
+    line-height: 0.5;
+    font-size: 2rem;
+    color: #ffffff;
+    vertical-align: middle;
+}
+.customcard p {
+    font-size: 1.5rem;
+    margin-top: 0;
+    line-height: 0.8;
+    color: #fff;
+    border-bottom: 3px solid #fff;
+    padding-bottom: 70px;
+}
+.purple {
+    background: #513cf9;
+}
+.yellow {
+    background: #efb841;
+}
+.green {
+    background: #6bc1b8;
+}
+
+.red{
+
+    background: #FF0040;
+}
+
+/*** Estilos de la cuarta sección del Home ***/
+
+a.descubrecard, .menupanel a, a.viviendacard {
+    text-decoration: none!important;
+}
+.descubrecard > div {
+    min-height: 210px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+    font-family: 'GothamUltra';
+    font-size: 1.4rem;
+    transition: 0.4s;
+}
+.descubrecard:hover > div {
+    background: rgba(206, 155, 14, 0.4);
+    color: #fff;
+}
+.btn-descubre {
+    border: 2px solid #fff;
+    font-family: 'GothamUltra';
+    font-size: 1.4rem;
+    color: #fff;
+    margin-top: 45px;
+    margin-bottom: 120px!important;
+}
+.btn-descubre:hover {
+    border-color: #ffb930;
+    color: #ffb930;
+}
+.btn-descubre.morado:hover {
+    border-color: #513cf9;
+    color: #513cf9;
+}
+/*** Estilos de la quinta sección del Home ***/
+
+@media (min-width: 960px) {
+    .cellphone {
+        margin-top: -316px;
+    }
+    .compara {
+        margin-top: -195px;
+        font-size: 0.77rem;
+        padding-left: 380px;
+    }
+
+
+}
+@media (min-width: 870px) and (max-width: 959px) {
+    .cellphone {
+        margin-top: -220px;
+    }
+    .compara {
+        margin-top: -165px;
+        padding-left: 335px;
+    }
+
+}
+@media (min-width: 780px) and (max-width: 869px) {
+    .cellphone {
+        margin-top: -220px;
+    }
+    .compara {
+        margin-top: -165px;
+        padding-left: 290px;
+    }
+
+
+}
+@media (min-width: 500px) and (max-width: 779px) {
+    .cellphone {
+        margin-top: -95px;
+    }
+    .compara {
+        margin-top: -165px;
+        padding: 0 60px;
+        text-align: center!important;
+    }
+}
+@media (min-width: 466px) and (max-width: 499px) {
+    .cellphone {
+        margin-top: -85px;
+    }
+    .compara {
+        margin-top: -155px;
+        text-align: center!important;
+    }
+
+
+}
+@media (max-width: 465px) {
+    .cellphone {
+        margin-top: -85px;
+    }
+    .compara {
+        margin-top: -155px;
+        text-align: center!important;
+    }
+
+
+}
+@media (max-width: 959px) {
+
+    .my-overflowBuscadorAvanzado{
+
+        display: none;
+
+    }
+
+    /*    .mapaDiv{
+            
+            display: none;
+            
+        }*/
+
+
+}
+
+@media (max-width: 638px) {
+
+    .uk-height-viewport {
+        min-height: 20vh !important;
+    }
+
+}
+
+@media (min-width: 639px) {
+
+    .uk-height-viewport {
+        min-height: 40vh !important;
+    }
+
+}
+
+/*** Estilos de la sexta sección del Home ***/
+
+.nro {
+    font-size: 4.5rem;
+    font-family: 'GothamUltra';
+    color: #fff;
+    line-height: 4.5rem;
+}
+
+/*** Estilos del footer de Home (y del resto de las vistas) ***/
+
+footer{
+    background: #513cf9;
+    color: #000;
+    padding: 5% 10%;
+    color: #fff;
+}
+footer .contacto{
+    font-family: "Gotham-Book";
+}
+footer .contacto .logo{
+    padding-bottom: 15px;
+}
+footer .contacto p{
+    margin: 5px; padding: 0px;
+}
+footer .socials h3{
+    color: #efb841; line-height: 110%;
+}
+footer .socials ul{
+    margin: 0px; padding: 0px; list-style: none;
+}
+footer .socials ul li{
+    display: inline-block;
+    margin: 0px 5px;
+}
+footer .socials ul li img{
+    max-width: 45px;
+}
+
+/*** Estilos de las cabeceras 02 y 03 (Formulario Roomie y Anfitrión) ***/
+
+.cabeceraperfil {
+    margin-top: 85px;
+}
+.perfil h2 {
+    font-family: 'GothamUltra';
+    color: #fff;
+    font-size: 2.9rem;
+    margin-bottom: 0;
+}
+.perfil p {
+    margin-top: 0;
+    color: #efb841;
+    font-family: 'Gotham-Bold';
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+}
+.bx_disponibilidad button {
+    background: #513cf9;
+    color: #fff;
+    font-family: 'Gotham-Book';
+    border-radius: 30px;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+}
+.bx_formulario input::placeholder,
+.bx_formulario textarea::placeholder {
+    color: #513cf9;
+    opacity: .9;
+}
+.bx_formulario input[type="text"],
+.bx_formulario input[type="email"],
+.bx_formulario input[type="password"],
+.bx_formulario input[type="date"],
+.bx_formulario textarea {
+    border-radius: 25px;
+    color: #513cf9;
+    padding: 0 20px;
+    font-family: 'Gotham-Medium';
+}
+.bx_formulario textarea {
+    padding-top: 20px;
+}
+.purple-icon {
+    color: #fff;
+    background: #513cf9;
+    border-radius: 25px;
+    padding: 0 20px;
+}
+.gustos h5 {
+    background: #fff;
+    color: #513cf9;
+    padding: 5px 20px;
+    border-radius: 25px;
+    font-family: 'Gotham-Medium';
+}
+.bx_formulario button[type="submit"] {
+    color: #fff;
+    background: #513cf9;
+    border-radius: 25px;
+    padding: 10px 20px;
+    border: none;
+    font-family: 'Gotham-Book';
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+/*** Estilos de las vistas 04-x (Panel Roomie y Anfitrión) ***/
+
+.img-perfil {
+    position: relative;
+}
+.img-perfil a {
+    display: block;
+    position: absolute;
+    bottom: 40px;
+    left: 47.5%;
+    color: #4e3be9;
+    font-family: "Gotham-Book";
+}
+.edit-perfil a {
+    display: block;
+    color: #4e3be9;
+    font-family: "Gotham-Book";
+}
+.sidebar {
+    background: #f2f2f2;
+    padding: 20px;
+    border-radius: 25px;
+}
+.estrellas {
+    background: #f2f2f2;
+}
+.estrellas li .uk-icon polygon{
+    fill: #606060;
+    stroke: #606060;
+}
+.estrellas li.uk-active .uk-icon polygon{
+    fill: #efb841;
+    stroke: #efb841;
+}
+.panel-title {
+    font-size: 1.4rem;
+}
+.notificacion {
+    background: #efb841;
+    color: #fff;
+    padding: 0px 4px;
+    font-size: 0.6rem;
+    border-radius: 20px;
+}
+.menupanel > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.menupanel-inquilinos > li > a {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.menupanel > li > a:hover, .menupanel-inquilinos > li > a:hover {
+    background: #e6e6e6;
+    margin-left: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+}
+.panelfield, .txt .username, .txt .house {
+    font-size: 0.85rem;
+}
+.panelfield label {
+    display: block;
+    color: #513cf9;
+}
+.txt {
+    display: inline-block;
+    padding-left: 10px;
+    color: #666;
+}
+.txt .name {
+    font-family: 'Gotham-Medium';
+    color: #513cf9;
+    line-height: 1;
+}
+.centrarv {
+    display: flex!important;
+    align-items: center;
+}
+
+/*** Estilos inbox 04-2 ***/
+
+#messages{
+    display: inline-block;
+    /*background-color: #fff;*/
+    /*width: 70%;*/
+    vertical-align: top;
+    height: auto;
+}
+
+#messages .bx_mensajes{
+    position: relative;
+}
+
+#messages .bx_mensajes ul{
+    position: relative;
+    background-color: #fff;
+    height: 410px;
+    margin-bottom: 10px;
+    list-style: none;
+    padding-top: 0;
+    padding-left: 3%;
+    border-radius: 20px;
+}
+
+#messages .bx_mensajes ul.mensajero{
+
+    overflow-y: auto;
+
+}
+#messages::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+#messages::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.15);
+    background-color: #fff;
+}
+#messages::-webkit-scrollbar-thumb {
+    background-color: #F90; 
+    background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, 0.2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, .2) 50%,
+        rgba(255, 255, 255, .2) 75%,
+        transparent 75%,
+        transparent)
+}
+#messages .bx_mensajes ul li{
+    width: 100%;
+}
+#messages .bx_mensajes ul li p.him{
+    width: 100%;
+    float: left;
+}
+#messages .bx_mensajes ul li img {
+    display: inline-block;
+    width: 40px;
+    vertical-align: top;
+}
+#messages .bx_mensajes ul li p.him{
+    background-color: #543ff9;
+    border-radius: 25px;
+    margin: 30px 0 5px;
+    padding: 15px;
+    width: 65%;
+    color: white;
+    text-align: justify;
+    position: relative;
+    z-index: 100;
+}
+
+#messages .bx_mensajes ul li p.him span.time{
+    position: absolute;
+    color: #aaa;
+    bottom: -15px;
+    right: 5%;
+    font-size: 0.8em;
+}
+
+#messages .bx_mensajes ul li p.him::before{
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 15%;
+    z-index: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid #543ff9;
+}
+
+#messages .bx_mensajes ul li p.me{
+    width: 100%;
+}
+#messages .bx_mensajes ul li p.me{
+    background-color: #efb841;
+    width: 65%;
+    color: white;
+    float: right;
+    border-radius: 25px;
+    margin: 30px 0 5px;
+    margin-right: 2%;
+    padding: 15px;
+    text-align: justify;
+    position: relative;
+}
+#messages .bx_mensajes ul li p.me::before{
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 15%;
+    z-index: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid #efb841;
+}
+
+#messages .bx_mensajes ul li p.me span.time{
+    position: absolute;
+    color: #aaa;
+    bottom: -15px;
+    left: 5%;
+    font-size: 0.8em;
+}
+
+#messages .bx_mensajes ul li p.him,
+#messages .bx_mensajes ul li p.me{
+    font-size: 0.8rem;
+}
+
+#messages .bx_mensajes .messageInput input#messageText{
+    background-color: #fff;
+    border: 2px solid #ddd;
+    font-family: 'Gotham-Book';
+    font-size: 0.9rem;
+}
+
+#messages .bx_mensajes .messageInput span#imgICON{
+    background-color: #efb841;
+    padding: 10px 0px 11px;
+    color: white;
+    cursor: pointer;
+    margin: 0 5px;
+    justify-content: center;
+    display: flex;
+}
+
+#messages .bx_mensajes .messageInput button, .enviarsolicitud {
+    background-color: #543ff9;
+    font-family: 'Gotham-Book';
+    color: white;
+    padding: 10px 10px;
+    border: none;
+}
+
+/*** Estilos vista 04-3 (Solicitudes) ***/
+
+.titulosolicitud {
+    color: #513cf9!important;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.titulocuarto {
+    color: #f0506e!important;
+    margin-top: 5px;
+    text-align: center;
+}
+.subtitle {
+    font-size: 12px;
+    text-align: center;
+    color: #ffb930;
+}
+.date {
+    font-size: 0.7rem;
+    color: #aaa;
+}
+.solicitudp {
+    font-size: 0.8rem;
+    color: #606060;
+    text-align: justify;
+}
+.textmodal {
+    display: inline-block;
+    vertical-align: top;
+    width: 90%;
+    margin: 0 -5px;
+    color: #c2c2c2;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+.textmodal .fecha {
+    font-size: 0.5em;
+    float: right;
+    font-weight: bolder;
+    text-align: right;
+    font-family: "Gotham-Medium";
+}
+.textmodal .name {
+    font-size: 0.8em;
+    color: #543ff9;
+    font-family: "Gotham-Medium";
+    font-weight: bolder;
+}
+.textmodal .username {
+    font-size: 0.5em;
+    color: #c2c2c2;
+    font-weight: bolder;
+    font-family: "Gotham-Medium";
+}
+.textmodal .casa {
+    font-size: 0.5em;
+    color: #c2c2c2;
+    font-weight: bolder;
+    font-family: "Gotham-Medium";
+}
+.modalp {
+    font-size: 0.9rem;
+    text-align: justify;
+}
+.btn-modal button {
+    background: #513cf9;
+    color: #fff;
+    font-family: 'Gotham-Medium';
+    border: none;
+    border-radius: 30px;
+    padding: 5px 15px;
+    margin-top: 10px;
+}
+.cerrarmodal {
+    font-size: 2rem;
+    color: #543ff9;
+    font-family: "Gotham-Medium";
+    text-align: right;
+    border: none;
+    margin-bottom: 20px;
+}
+.modal-custom {
+    background: #f2f2f2;
+    padding: 20px 40px;
+    border-radius: 25px;
+}
+
+/*** Estilos Vista 04-5 (Viviendas Panel) ***/
+
+.viviendacard > .casacard > div {
+    height: 160px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+    font-family: 'GothamUltra';
+    font-size: 1.4rem;
+    transition: 0.4s;
+}
+
+.viviendacard > div > div > .casacard > div {
+    height: 160px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+    font-family: 'GothamUltra';
+    font-size: 1.4rem;
+    transition: 0.4s;
+}
+
+
+.viviendacard:hover > div > div > .casacard > div {
+    background: rgba(81, 60, 249, 0.4);
+    color: #fff;
+}
+
+
+.viviendacard:hover > .casacard > div {
+    background: rgba(81, 60, 249, 0.4);
+    color: #fff;
+}
+
+.footerViviendas {
+    color: #666;
+    font-size: 0.6rem;
+    display: inline-block;
+}
+.figureViviendas .addicon svg {
+    color: #513cf9;
+}
+.stars {
+    background: #fff;
+}
+.stars li .uk-icon polygon{
+    fill: #606060;
+    stroke: #606060;
+}
+.stars li.uk-active .uk-icon polygon{
+    fill: #efb841;
+    stroke: #efb841;
+}
+.anadirv {
+    height: 160px;
+    background: #f2f2f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.anadirvslide {
+    border: 1px solid #513cf9;
+}
+.anadirvslide img {
+    /*width: 50%;*/
+    padding-top: 10px;
+    box-sizing: border-box;
+    margin-bottom: 6px;
+    max-height: 80px;
+}
+.anadirvslide figcaption {
+    color: #000;
+    font-size: 0.8rem;
+    padding-bottom: 7px;
+}
+.anadirvslide:hover {
+    background-color: rgba(255,218,185,0.5);
+    cursor: pointer;
+}
+.anadirv-marginlist {
+    margin-top: 15px;
+}
+@media (min-width: 640px) {
+    .anadirv-marginlist {
+        margin-top: -40px;
+    }
+}
+.anadirv-flechas {
+    margin-bottom: 5px;
+    justify-content: right;
+}
+.btn-anadir {
+    background: #513cf9;
+    color: #fff;
+    font-family: 'Gotham-Medium';
+    border: none;
+    border-radius: 30px;
+    padding: 10px 25px;
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+.btn-anadir:hover {
+    color: #ffb930;
+}
+
+.btn-eliminar {
+    background: #990000;
+    color: #fff;
+    font-family: 'Gotham-Medium';
+    border: none;
+    border-radius: 10px;
+    padding: 10px 25px;
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+/*** Estilos Vista 04-6 (Añadir Vivienda 1) ***/
+
+/**Opening of On/Off Switch-1**/
+
+.onoffswitch {
+    position: relative; width: 100px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #f2f2f2; border-radius: 0px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 31px; padding: 0;       line-height: 31px;
+    font-size: 18px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "OFF";
+    padding-left: 8px;
+    background-color: #999999; color: #C2C2C2;
+}
+.onoffswitch-inner:after {
+    content: "ON";
+    padding-right: 12px;
+    background-color: #FFAE00; color: #FFFFFF;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 44px; margin: 0px; height:10px;
+    background: #FFFFFF;
+    position: absolute;
+    padding-bottom: 20px;
+    right: 53px;
+    border: 2px solid #f2f2f2; border-radius: 0px;
+    transition: all .3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
+}
+/**Closing of On/Off Switch-1**/
+
+iframe.mapa {
+    border:0;
+    margin:0;
+    width: 100%;
+    height: 50%;
+    min-height: 450px;
+    margin: 40px 0px;
+}
+
+/*** Estilos Vista 04-7 (Añadir Vivienda 2) ***/
+
+.titulo h5 {
+    font-family: 'Gotham-Medium';
+    font-size: 1.3rem;
+    color: #513cf9;
+}
+.descripcionBody {
+    border: 3px solid #ccc;
+    padding: 10px;
+}
+.txtdescripcion {
+    width: 100% !important;
+    height: 200px !important;
+    border: none !important;
+    background: transparent !important;
+    resize: none;
+    overflow: auto;
+    color: #777;
+    font-family: "Gotham-Medium";
+    font-size: 1.2em;
+}
+.muestranosBody {
+    margin: 20px 0px 10px;
+    border: 3px dashed #543ff9;
+    padding: 10%;
+}
+.muestranosBody div {
+    width: 40%;
+    min-width: 150px;
+    margin: auto;
+}
+.muestranosBody > div > div {
+    width: 100%;
+}
+.muestranosBody > div > div > button {
+    width: 100%;
+    background-color: #543ff9;
+    padding: 20px 0px;
+    color: white;
+    font-family: "GothamUltra";
+    text-transform: none;
+    font-size: 1.6em;
+}
+.muestranosBody > div > p {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    color: #777;
+    font-family: "Gotham-Medium";
+    font-size: 0.85em;
+}
+.vivienda_paso3 #picture {
+    width: 100%;
+    padding-bottom: 8.5px;
+}
+.gridPortada {
+
+    margin-bottom: 50px;
+}
+
+/*** Estilos Vista 05 (Búsqueda de Vivienda) ***/
+
+.footerViviendas p, .filtros {
+    font-size: 0.8rem;
+}
+.footerViviendas .disponibilidadv {
+    font-size: 0.6rem;
+}
+.footerViviendas .categoriav span {
+    color: #513cf9;
+}
+.footerViviendas .categoriah span, h3.habitacion {
+    color: #ffb930;
+}
+.fav {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 9999999;
+}
+.fav svg path {
+    fill: #666;
+    stroke: #666!important;
+}
+.fav:hover svg path {
+    fill: #513cf9;
+    stroke: #513cf9!important; 
+}
+.uk-select:not([multiple]):not([size]){
+    /* needed */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* SVG background image */
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' ratio='1'><polyline fill='none' stroke='%238f8f8f' stroke-width='1.03' points='16 7 10 13 4 7'></polyline></svg>") no-repeat;
+    background-size: 24px;
+    background-position: calc(100% - 20px) center;
+    background-repeat: no-repeat;
+}
+/*** Estilos de los íconos de las cabeceras 04-1 a la 04-8 ***/
+
+.specialmargin {
+    margin-bottom: 60px;
+}
+.marginicon {
+    margin-top: 250px;
+}
+/*** Estilos vistas 06 en adelante ***/
+
+.fecharesena {
+    font-size: 0.7em;
+}
+.evaluacion {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    margin-top: 5px !important;
+}
+.nameanfi {
+    font-size: 2rem;
+    color: #efb841!important;
+}
+.useranfi {
+    font-size: 1.3rem!important;
+}
+.enviarsolicitud {
+    font-size: 1rem;
+}
+.noborder {
+    border: none;
+}
+.anadirvslide.noborder:hover {
+    background-color: initial;
+    cursor: initial;
+}
+.username {
+    color: #666;
+}
+.stars.starsconoce {
+    background: none;
+    position: absolute;
+    bottom: -15px;
+}
+.centrarv-conoce {
+    padding-bottom: 9px;
+}
+.centrarv-conoce img {
+    height: 40px;
+}
+/*** Panel Roomies ***/
+
+.iconHeart {
+    color: #513cf9;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+
+    margin: 100px auto;
+    -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+    animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+    0% { -webkit-transform: perspective(120px) }
+    50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+    100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+    0% { 
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+        -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+    } 50% { 
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+        -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+    } 100% { 
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    }
+}
+
+/*btn registrate*/
+.btn-registrate {
+    border: 2px solid #fff;
+    font-family: 'GothamUltra';
+    font-size: 1.4rem;
+    color: #fff;
+    margin-top: 20px;
+    /*margin-bottom: 20px!important;*/
+}
+.btn-registrate:hover {
+    border-color: #ffb930;
+    color: #ffb930;
+}
+.btn-registrate.morado:hover {
+    border-color: #513cf9;
+    color: #513cf9;
+}
+/*
+.uk-height-viewport {
+    min-height: 40vh !important;
+}*/
+
+
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+li.ng-scope.active > a{
+
+    color: #6A0888;
+    font-weight: bold;
+}
+
+.msjValid{
+    font-size: 10pt;
+    color: #FF0040;
+    font-weight: bolder;
+}
+
+.msjValidDiv{
+
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+
+}
+
+.thumbnail{
+
+    max-width: 100px;
+    height: 130px;
+
+}
+
+
+ul.thumbnails.image_picker_selector li {
+    margin: 3px 3px 3px 3px !important;
+}
+
+.roomDescripcion {
+    width: 100% !important;
+    height: 200px !important;
+
+}
+
+
+.pasos{
+
+    padding-left: 20px !important;
+}
+
+
+.my-overflowBuscador {
+    overflow-y: auto;
+    height: 400px;
+    max-height: 400px;
+}
+
+.my-overflowBuscadorAvanzado {
+    overflow-y: auto;
+    height: 500px;
+    max-height: 500px;
+}
+
+.my-overflowCarac {
+    overflow-y: auto;
+    height: 150px;
+    max-height: 150px;
+}
+
+.my-overflow {
+    overflow-y: auto;
+    height: 200px;
+    max-height: 200px;
+}
+
+#botonSubmit:disabled{
+    background: #dddddd;
+}
+
+#coolbutton:disabled{
+    background: #dddddd;
+}
+
+
+.btn-busqueda {
+    border: 1px solid #fff;
+    font-family: 'GothamUltra';
+    font-size: 1.4rem;
+    color: #FF0040;
+    margin-top: 10px;
+    margin-bottom: 10px!important;
+}
+
+.btn-busqueda.morado:hover {
+    border-color: #513cf9;
+    color: #513cf9;
+}
+
+
+h5.soyRoomie {
+    color: #513cf9;
+    font-weight:bolder;
+}
+
+.terminosDiv{
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.divisoria{
+
+    border: 0;
+    height: 0; /* Firefox... */
+    box-shadow: 0 0 10px 1px black;
+
+}
+
+#linkTerminos{
+
+    color: #F5F5F5;
+
+}
+
+.botonverde{
+
+    background-color: #33cc00;
+    color: #fff;
+}
+
+.star{
+
+    width: 50px;
+    height: 50px;
+}
+
+.rating-container{
+    align-content: center;
+
+}
+
+.modalCarac{
+
+    display: inherit !important;
+
+}
+.modalCarac img {
+    /*width: 50%;*/
+    padding-top: 2px;
+    box-sizing: border-box;
+    margin-bottom: 2px;
+    max-height: 50px;
+}
+
+.modalCarac figcaption {
+    color: #000;
+    font-size: 0.5rem;
+    padding-bottom: 3px;
+}
+
+.listamensajero{
+
+    overflow-y: auto;
+    height: 400px;
+    max-height: 400px;
+}
+
+/*div[title|="Costo"]{
+    
+    background-color: #6A0888;
+    color: #F5F5F5;
+    
+}*/
+@media (min-width: 870px) and (max-width: 959px) {}
+
+.botonBajo{
+    color: #513cf9;
+    font-family: 'Gotham-Medium'
+
+}
+
+.botonBajo2{
+    color: #FFFFFF;
+    font-family: 'Gotham-Medium';
+    font-size: 12px;
+
+}
+
+.crop-image {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+.crop-image img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.crop-image img.portrait {
+    width: 100%;
+    height: auto;
+}
+
+.openpaySmallLabel{
+
+    color: #444;
+    font-size: 12px;
+    font-weight: 300;
+
+}
+
+.buttonPay{
+
+    float: right;
+}
+
+.pymnt-itm h2 {
+    background-color: #e9e9e9;
+    font-size: 24px;
+    line-height: 24px;
+    margin: 0;
+    padding: 28px 0 28px 20px;
+    width: 100%;
+}
+.pymnt-itm.active h2 {
+    background-color: #513cf9;
+    color: #fff;
+    cursor: default;
+}
+
+.txtCh {
+    display: inline-block;
+    padding-left: 10px;
+    color: #666;
+    font-family: 'Gotham-Medium';
+    color: #513cf9;
+    line-height: 1;
+    font-size: 13px;
+}
+
+.manageVCuarto{
+
+    color: #33cc00;
+
+}
+.globo{
+    background: #ff0066;
+    color: #fff;
+    padding: 0px 6px;
+    font-size: 0.9rem;
+    border-radius: 50px;
+}
+
+.checkcross{
+
+    width: 400px;
+}
+
+
+.aceptoterminos{
+    font-size: 1.4rem;
+}
+
+.btn-modallogin {
+    background: #513cf9;
+    color: #fff;
+    font-family: 'Gotham-Medium';
+    border: none;
+    border-radius: 20px;
+    padding: 5px 15px;
+    margin-top: 7px;
+    font-size: 1.1rem;
+}
+
+.btn-modallogin:hover {
+    color: #ffb930;
+}
+
+.registracard > div {
+    min-height: 410px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+    font-family: 'GothamUltra';
+    font-size: 1.4rem;
+    transition: 0.4s;
+}
+.registracard:hover > div {
+    background: rgba(51, 153, 255, 0.4);
+    color: #fff;
+}
+
+.fotoAnfi{
+    
+    margin-top: 20px;
+    margin-bottom: 20px !important;
+    
+}

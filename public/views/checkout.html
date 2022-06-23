@@ -1,0 +1,174 @@
+<!--<div id="paypal-button-container"></div>
+-->
+<script>
+    function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46) {
+    return false;
+    }
+    return true;
+    }
+</script>   
+
+
+<section class="uk-section uk-section-small uk-background-cover uk-background-top-center" style="margin-top: -111px; padding-top: 145px;">
+    <div ng-controller="checkoutCtrl" class="uk-container uk-container-small">
+        <div class="uk-grid uk-grid-small">
+            <div class="uk-width-1-1@m">
+
+                <div class="sidebar">
+                    <h3 class="uk-text-center panel-title nomarginb">Verifica Renta:</h3>
+                    <hr>
+                    <div class="panelfield" uk-grid>
+                        <div class="uk-width-1-1">
+                            <h3 class="panel-title">Anfitrión</h3>
+
+                            <div class="uk-width-1-1">
+                                <img class="uk-display-inline-block uk-border-circle" src="{{responsable.avatar}}" width="76" height="76"alt=" ">
+                                <div class="txtCh">
+                                    <div class="name nameanfi"> {{responsable.nombre}} {{responsable.primerApellido}} </div>
+                                    <div class="username useranfi">@{{responsable.nombreUsuario}}</div>
+                                </div>
+                            </div>
+
+
+                            <hr>
+                        </div>
+
+                        <div class="uk-width-1-2@m">
+                            <h3 class="nomarginb">Vivienda: {{vivienda.titulo}}</h3>
+                            <a class="viviendacard" href="#">
+                                <div class="uk-background-cover casacard" style="background-image: url(../../../uploads/{{vivienda.portada}});">
+
+                                    <div class="uk-card uk-card-large uk-card-body">
+                                        <p>Ver más</p>
+                                    </div>
+                                </div>
+                                <div class="footerViviendas uk-width-1-1">
+
+
+                                    <!--DATOS-->                                    
+
+
+                                </div>
+                            </a>
+                            <!--<button class="enviarsolicitud" type="button" name="button">Calificar</button>--> 
+                            <hr>
+
+                        </div>
+
+                        <div ng-if="cuarto != null" class="uk-width-1-2@m">
+
+                            <h3 class="nomarginb">Cuarto: {{cuarto.titulo}}</h3>
+                            <a class="viviendacard" href="#">
+                                <div class="uk-background-cover casacard" style="background-image: url(../../../uploads/{{cuarto.portada}});">
+
+                                    <div class="uk-card uk-card-large uk-card-body">
+                                        <p>Ver más</p>
+                                    </div>
+                                </div>
+                                <div class="footerViviendas uk-width-1-1">
+
+                                    <!--DATOS-->
+                                </div>
+                            </a>
+                            <!--<button class="enviarsolicitud" type="button" name="button">Calificar</button>--> 
+
+
+                        </div>
+                        <div class="uk-width-1-1 uk-grid">
+                            <div class="uk-width-1-1">
+                                <h3 class="nomarginb uk-align-right"><b>Renta:    {{appli.price}} MXN</b></h3>
+                            </div>
+                            <div class="uk-width-1-1">
+                                <h3 class="nomarginb uk-align-right"><b>Cargo Servicio:    {{comi}} MXN + IVA</b></h3>
+                            </div>
+                            <br>
+                            <div class="uk-width-1-1">
+                                <h1 class="nomarginb uk-align-right"><b>Total:    {{monto}} MXN</b></h1>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="uk-width-1-1@m uk-grid">
+
+                <form  id="payment-form" name="form" ng-submit="checkoutOpenPay()"  class="uk-form" >
+                    <input type="hidden" name="token_id" id="token_id">
+                    <div class="pymnt-itm card active">
+                        <h2>Tarjeta de crédito o débito</h2>
+                        <div class="uk-width-1-1@m uk-grid">
+                            <div class="uk-width-1-2@s">
+                                <div>
+                                    <label>Nombre del titular</label>
+                                    <input type="text" placeholder="Como aparece en la tarjeta" class="uk-input" autocomplete="off" data-openpay-card="holder_name">
+                                </div>
+                                <div>
+                                    <label>Número de tarjeta</label>
+                                    <input type="text"  class="uk-input" onkeypress="return isNumber(event)" autocomplete="off" data-openpay-card="card_number" maxlength="16">
+                                </div>
+                            </div>
+
+                            <div class=" uk-width-1-2@s uk-grid">
+                                <label>Fecha de expiración</label>
+                                <div class=" uk-width-1-1@m uk-grid">
+
+                                    <div class=" uk-width-1-2@s"><input type="text"  class="uk-input" placeholder="Mes" onkeypress="return isNumber(event)" data-openpay-card="expiration_month" maxlength="2"></div>
+                                    <div class=" uk-width-1-2@s"><input type="text"  class="uk-input" placeholder="Año"  onkeypress="return isNumber(event)"data-openpay-card="expiration_year" maxlength="2"></div>
+                                </div>
+
+                                <div class=" uk-width-1-1@m">
+                                    <label>Código de seguridad</label>
+                                    <div class=" uk-width-1-1@s uk-grid">
+                                        <div class=" uk-width-1-2@s">
+                                            <input type="text"  class="uk-input"  onkeypress="return isNumber(event)" placeholder="3 o 4 dígitos" autocomplete="off" data-openpay-card="cvv2" maxlength="4">
+                                        </div>
+                                        <div class=" uk-width-1-2@s">
+                                            <img src="./img/openpay/cvv.png">
+
+                                        </div>   
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="uk-width-1-1@m uk-grid">
+                                <div class="uk-width-1-2@s uk-grid">
+                                    <div class="uk-width-1-2@s">
+                                        <label class="openpaySmallLabel">Transacciones realizadas vía:</label>
+                                        <img src="./img/openpay/openpay.png">
+                                    </div>
+                                    <div class="uk-width-1-2@s">
+                                        <img  src="./img/openpay/security.png">
+                                        <label class="openpaySmallLabel">
+
+                                            Tus pagos se realizan de forma segura con encriptación de 256 bits
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-2@s">
+                                    <button id="pay-button"  class="uk-button-primary buttonPay btn-anadir right" type="submit" name="submitName" >Pagar</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <div id="idCheckLoad" class="uk-width-1-1@m uk-text-center" style="visibility: hidden;">
+                <h3><i class="uk-icon-warning"></i> No cierre ni refresque esta ventana</h3>
+
+                <!--<button class="uk-button-primary  btn-anadir" type="submit">Confirmar Pago</button>-->
+                <div uk-spinner="ratio: 4"></div>
+            </div>
+        </div>
+    </div>
+</section>

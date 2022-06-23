@@ -1,0 +1,111 @@
+<section class="uk-section uk-section-small uk-background-cover uk-background-top-center" style="margin-top: -111px; padding-top: 145px;">
+
+    <div ng-controller="editViviendaCaracCtrl" class="uk-container uk-container-small">
+        <div class="uk-grid uk-grid-small uk-text-center">
+            <div class="uk-width-1-6@s"></div>
+            <div class="uk-width-2-3@s">
+                <h3 class="nomarginb">Edita características</h3>
+                <h4 class="infohome">Edite las características, servicios y áreas comunes de su vivienda</h4>
+            </div>
+            <div class="uk-width-expand"></div>
+        </div>
+        <form novalidate name="form"  ng-submit="edita(form, vivienda)"  enctype="multipart/form-data">
+            <div class="uk-grid">
+
+                <div class="uk-width-1-2@m">
+
+                    <fieldset data-uk-margin>
+                        <legend><b>Áreas comunes/Amenidades: </b></legend>
+                        <div class="my-overflow">
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="centrolavado.png"><label class="amenidadesLabel">Centro  de lavado</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="cocina.png"><label class="amenidadesLabel">Cocina</label> <br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="comedor.png"><label class="amenidadesLabel">Comedor</label> <br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="jardin.png"><label class="amenidadesLabel"> Jardin</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="roof.png"><label class="amenidadesLabel">Roof</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="sala.png"><label class="amenidadesLabel">Sala</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="salajuegos.png"><label class="amenidadesLabel">Sala de juegos</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="salatv.png"><label class="amenidadesLabel">Sala de TV</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="alberca.png"><label class="amenidadesLabel">Alberca</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="gym.png"><label class="amenidadesLabel">Gym</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="estacionamiento.png"><label class="amenidadesLabel">Estacionamiento</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="cancha.png"><label class="amenidadesLabel">Cancha</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="aa.png"><label class="amenidadesLabel">Aire Acondicionado</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="estudio.png"><label class="amenidadesLabel">Estudio</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="parrilla.png"><label class="amenidadesLabel">Parrilla</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="portero.png"><label class="amenidadesLabel">Portero</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="elevador.png"><label class="amenidadesLabel">Elevador</label><br>
+                            <input class="amenidadesClass uk-radio" type="checkbox" value="cuartomeditacion.png"><label class="amenidadesLabel">Cuarto Meditación</label><br>
+                       
+                        </div>
+                    </fieldset>                                                         
+
+                </div>  
+
+                <div class="uk-width-1-2@m">
+
+                    <fieldset>
+                        <legend><b>Servicios: </b></legend>
+                        <div class="my-overflow">
+                            <input class="serviciosClass uk-radio" type="checkbox" value="telefono.png"><label class="serviciosLabel">Telefono</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="cable.png"><label class="serviciosLabel">Cable</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="agua.png"><label class="serviciosLabel">Agua</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="luz.png"><label class="serviciosLabel">Luz Eléctrica</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="gas.png"><label class="serviciosLabel">Gas natural</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="calefaccion.png"><label class="serviciosLabel">Calefacción</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="limpieza.png"><label class="serviciosLabel">Limpieza</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="basura.png"><label class="serviciosLabel">Recolección de basura</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="wifi.png"><label class="serviciosLabel">Wi-Fi</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="aire.png"><label class="serviciosLabel">Aire acondicionado</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="calentadorsolar.png"><label class="serviciosLabel">Calentador solar</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="luzsolar.png"><label class="serviciosLabel">Luz solar</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="seguridad.png"><label class="serviciosLabel">Seguridad</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="calentador.png"><label class="serviciosLabel">Calentador</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="circuito.png"><label class="serviciosLabel">Circuito Cerrado</label><br>
+                            <input class="serviciosClass uk-radio" type="checkbox" value="netflix.png"><label class="serviciosLabel">Netflix</label><br>
+
+                        </div>
+                    </fieldset>                                                         
+
+                </div>  
+
+                <div class="uk-width-1-2@m">
+
+                    <fieldset>
+                        <legend><b>Características: </b></legend>
+                        <div class="my-overflow">
+                            <input class="caracClass uk-radio" type="checkbox" value="gay.png" /><label class="caracLabel">Gay Friendly</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="vegan.png" /><label class="caracLabel">Vegan Friendly</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="nofumar.png" /><label class="caracLabel">No Fumar</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="parejas.png" /><label class="caracLabel">Parejas</label><br />
+                            <input class="caracClass uk-radio" type="checkbox" value="solochicas.png" /><label class="caracLabel">Sólo Mujeres</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="pet.png" /><label class="caracLabel">Pet Friendly</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="noalcohol.png" /><label class="caracLabel">No Alcohol</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="nofiestas.png" /><label class="caracLabel">No Fiestas</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="solohombres.png" /><label class="caracLabel">Sólo Hombres</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="eco.png" /><label class="caracLabel">Eco Friendly</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="conperro.png" /><label class="caracLabel">Con Perro</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="congato.png" /><label class="caracLabel">Con Gato</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="fiesta.png" /><label class="caracLabel">Fiesta</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="amueblado.png" /><label class="caracLabel">Amueblado</label><br>
+                            <input class="caracClass uk-radio" type="checkbox" value="noche.png" /><label class="caracLabel">Visitas de noche</label><br>
+                       
+                        </div>
+                    </fieldset>                                                         
+
+                </div>  
+
+            </div>
+
+            <div class="uk-grid">
+                <div class="uk-width-1-1">
+
+                    <input class="uk-align-center btn-anadir" id="coolbutton" name="submitName" type="submit" value="Actualizar Vivienda" />                        
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
+
+</section>

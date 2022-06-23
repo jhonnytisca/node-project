@@ -1,0 +1,66 @@
+<section class="uk-section uk-section-large uk-background-cover uk-background-top-center" style="background-image: url(images/contacto-bg.png); margin-top: -210px; padding-top: 230px;">
+    <div class="uk-container uk-container-small">
+        <div class="uk-grid" style="margin-top: 85px;">
+            <div class="uk-width-1-1 uk-text-center">
+                <h3 style="font-size: 2.5rem;">Login</h3>
+                <div  ng-controller="loginCtrl" class="bx_formulario">
+                    <form  ng-submit="login()" >
+
+                        <div class="uk-grid uk-grid-small" uk-grid>
+                            <div class="uk-width-1-1">
+                                <input ng-model="email" class="uk-input" type="text" name="username" placeholder="Username" />
+                            </div>
+                            <div class="uk-width-1-1">
+                                <input ng-model="password" class="uk-input" type="password" name="password" placeholder="Password" />
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div ng-controller="facebookCtrl"  >
+                    <br>
+                    <div class="fb-login-button group" 
+                         data-width="350" 
+                         data-max-rows="1" 
+                         data-size="large" 
+                         data-button-type="login_with" 
+                         data-show-faces="false" 
+                         data-auto-logout-link="false" 
+                         data-use-continue-as="true"
+                         data-scope="public_profile, email"
+                         onlogin="checkFBLoginState();"
+                         > 
+                    </div>
+                    <div>
+                        <p class="botonBajo2">*Login Facebook sólo disponible para roomies</p>
+                    </div>
+                </div>
+                <div uk-grid>
+                    <div class="uk-width-1-2">
+
+                        <a class="uk-button btn-registrate morado" href="#/altaRoomie">
+                            <i class="uk-icon-user"></i>   
+                            Crear perfil Roomie
+                        </a>
+                        <p class="botonBajo">Busco Cuarto</p>
+                    </div>
+                    <div class="uk-width-1-2">
+                        <a class="uk-button btn-registrate morado" href="#/altaResponsable">
+                            <i class="uk-icon-home"></i>  
+                            Crear perfil Anfitrión
+                        </a>
+                        <p class="botonBajo">Tengo Cuarto</p>
+                    </div>
+                </div>   
+                <br>
+
+                <div>
+                    <p class="botonBajo"> <a href="#/changeP">No recuerdo mi contraseña</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

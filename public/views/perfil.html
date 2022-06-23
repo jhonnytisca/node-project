@@ -1,0 +1,388 @@
+<!--BOOTSTRAP FORMS--> 
+<link rel="stylesheet" href="css/bootstrap-formhelpers.min.css" />
+
+<section ng-controller="consultarUsuarioCtrl"  class="uk-section uk-section-small">
+    <div class="uk-grid uk-grid-medium uk-flex-middle cabeceraperfil" uk-grid>
+        <div class="uk-width-1-1 uk-text-center">
+            <div class="img-perfil uk-inline">
+
+                <div class="crop-image">
+
+                    <img id="perfilPic"  class="portrait" src="{{usuario.avatar}}" alt="">
+
+                </div>
+
+
+                <div class="uk-position-cover">
+                    <img src="img/marco.png" />
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="uk-container uk-container-small">
+
+        <div class="uk-grid uk-grid-small" uk-grid>
+            <!-- Inicia Panel Izquierdo -->
+            <div class="uk-width-1-4@m ">
+                <div class="sidebar">
+
+                    <div ng-if="redondeado != 'S/N' || userSes.tipoUsuario # = '3'" class="uk-navbar-container">
+                        <div class="uk-navbar-center" style="background: #f2f2f2;">
+                            <ul class="uk-navbar-nav uk-width-1-1 uk-flex-around estrellas smallmargin">
+                                <li class="uk-active">
+                                    <span uk-icon="icon: star; ratio: 1.5" ></span>
+                                </li>
+                                <li ng-if="redondeado >= 2" class="uk-active">
+                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                </li>
+                                <li ng-if="redondeado < 2">
+                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                </li>
+                                <li ng-if="redondeado >= 3" class="uk-active">
+                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                </li>
+                                <li ng-if="redondeado < 3">
+                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                </li>
+                                <li ng-if="redondeado >= 4" class="uk-active">
+                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                </li>
+                                <li ng-if="redondeado < 4">
+                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                </li>
+                                <li ng-if="redondeado >= 5" class="uk-active">
+                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                </li>
+                                <li ng-if="redondeado < 5">
+                                    <span uk-icon="icon: star; ratio: 1.5"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <ul class="uk-iconnav uk-iconnav-vertical menupanel">
+                        <!--                        <li class="active">
+                                                    <a href="#/perfil">
+                                                        <i class="uk-icon uk-icon-image" style="background-image: url(images/icons/user.png);"></i>
+                                                        Mi Perfil
+                                                    </a>
+                                                </li>-->
+                        <li>
+                            <a href="#/bandeja">
+                                <i class="uk-icon uk-icon-image" style="background-image: url(images/icons/inbox.png);"></i>
+                                Inbox
+
+                            </a>
+                        </li>
+
+                        <!--                        <li>
+                                                    <a href="#">
+                                                        <span class="iconHeart" uk-icon="icon: heart"></span>
+                                                        Favoritos
+                                                    </a>
+                                                </li>-->
+                        <li>
+                            <a ng-if="userSes.tipoUsuario == '3'" href="#/miHogar">
+                                <i class="uk-icon uk-icon-image" style="background-image: url(images/icons/viviendas.png);"></i>
+                                Mi Hogar
+                            </a>
+                            <ul class="uk-nav uk-nav-default">
+                                <li class="uk-nav-divider"></li>
+                                <li ng-if="userSes.tipoUsuario == '4'">
+                                    <a href="#/misViviendas">
+                                        Mis Viviendas
+                                    </a>
+                                </li>
+                                <li ng-if="userSes.tipoUsuario == '4'">
+                                    <a href="#/altaVivienda">
+                                        Añadir Vivienda
+                                    </a>
+                                </li>
+                                <li ng-if="userSes.tipoUsuario == '3'">
+                                    <a href="#/misAplicaciones">
+                                        Mis Aplicaciones
+                                        <!--<span class="notificacion">2</span>-->
+                                    </a>
+                                </li>
+                                <!--                                <li ng-if="userSes.tipoUsuario == '3'">
+                                                                    <a href="#/miHogar">
+                                                                        Mi Vivienda
+                                                                    </a>
+                                                                </li>-->
+                            </ul>
+                        </li>
+                        <li class="uk-nav-divider"></li>
+                    </ul>
+
+
+                </div>
+            </div>
+            <!-- Termina panel izquierdo - Inicia panel central -->
+            <div class="uk-width-1-2@m">
+                <div class="sidebar">
+                    <div class="uk-child-width-1-2@m panelfield" uk-grid>
+                        <div>
+                            <h3 class="uk-text-center panel-title nomarginb">@{{usuario.nombreUsuario}}</h3>
+                            <h3 class="panel-title">Mis Datos</h3>
+                        </div>
+                        <div>
+                            <div class="edit-perfil">
+                                <a ng-if="userSes.tipoUsuario == '3'" class="uk-align-right" href="#/editRoomie">
+                                    <span uk-icon="file-edit"></span> Editar
+                                </a>
+                                <a ng-if="userSes.tipoUsuario == '4'" class="uk-align-right" href="#/editResponsable">
+                                    <span uk-icon="file-edit"></span> Editar
+                                </a>
+                            </div>                                    
+                        </div>
+                        <div class="smallmargin">
+                            <label>Nombre:</label> {{usuario.nombre}}  {{usuario.primerApellido}} 
+                        </div>
+                        <div class="smallmargin">
+                            <label>Correo:</label> {{usuario.correoElectronico}}
+                        </div>
+                        <div class="smallmargin">
+                            <label>País:</label> <i class="glyphicon bfh-flag-{{usuario.nacionalidad}}"></i>
+                        </div>
+                        <div class="smallmargin">
+                            <label>Edad:</label> {{usuario.edad}}
+                        </div>
+                        <div class="smallmargin">
+                            <label>Miembro desde:</label> {{usuario.altaUsuario}}
+                        </div>
+                        <!--                        <div class="smallmargin">
+                                                    <label>Teléfono:</label> 2291234567
+                                                </div>-->
+                        <div>
+                            <!-- empty space -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inician Viviendas Activas -->
+
+                <div ng-if="userSes.tipoUsuario == '9'" class="sidebar smallmargin">
+                    <div class="uk-width-1-1">
+                        <h3 class="panel-title">Mis Viviendas activas</h3>
+                        <div uk-grid>
+                            <div class="uk-visible@s uk-width-auto"></div>
+                            <div class="uk-width-5-6@s uk-width-1-1">
+                                <div uk-slider>
+                                    <div class="uk-position-relative">
+                                        <div class="uk-slider-container uk-light">
+                                            <ul class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-2@s uk-width-1-1 uk-text-center uk-grid-small">
+                                                <li>
+                                                    <img class="uk-border-circle" src="images/mis-viviendas.png" alt="">
+                                                </li>
+                                                <li>
+                                                    <img class="uk-border-circle" src="images/mis-viviendas.png" alt="">
+                                                </li>
+                                                <li>
+                                                    <img class="uk-border-circle" src="images/mis-viviendas.png" alt="">
+                                                </li>
+                                                <li>
+                                                    <img class="uk-border-circle" src="images/mis-viviendas.png" alt="">
+                                                </li>
+                                                <li>
+                                                    <img class="uk-border-circle" src="images/mis-viviendas.png" alt="">
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="uk-hidden@s uk-light">
+                                            <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                                            <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                                        </div>
+
+                                        <div class="uk-visible@s">
+                                            <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                                            <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                                        </div>
+
+                                    </div>
+                                    <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+                                </div>
+                            </div>
+                            <div class="uk-visible@s uk-width-auto"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Inician Mis Intereses -->
+
+                <div ng-if="userSes.tipoUsuario == '3'" class="sidebar smallmargin">
+                    <div class="uk-child-width-1-2@m panelfield" uk-grid>
+                        <div>
+                            <h3 class="panel-title">Mis Intereses</h3>
+                        </div>
+                        <div>
+                            <div class="edit-perfil">
+                                <a class="uk-align-right" href="#/editRoomieCarac">
+                                    <span uk-icon="file-edit"></span> Editar
+                                </a>
+                            </div>                                    
+                        </div>
+                    </div>
+
+                    <div class="uk-width-1-1">
+                        <div uk-slider>
+                            <div class="uk-position-relative">
+                                <div class="uk-slider-container uk-light">
+                                    <ul class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-3@s uk-child-width-1-2 uk-grid-small uk-text-center">
+                                        <li ng-repeat="x in user.characteristics" class="uk-active">
+                                            <div>
+                                                <figure class="uk-text-center anadirvslide">
+                                                    <img src="images/caractR/{{x.path}}" alt="">
+                                                    <figcaption>{{x.description}}</figcaption>
+                                                </figure>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="uk-hidden@s uk-light">
+                                    <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                                    <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                                </div>
+
+                                <div class="uk-visible@m">
+                                    <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                                    <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                                </div>
+
+                            </div>
+                            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Termina panel central - Inicia panel derecho -->
+            <div class="uk-width-1-4@m ">
+                <div class="sidebar">
+                    <h3 class="uk-text-center panel-title nomarginb">Acciones</h3>
+                    <ul  class="uk-iconnav uk-iconnav-vertical menupanel">
+
+                        <!--                        <li ng-if="userSes.tipoUsuario == '3'">
+                                                    <div><i class="uk-icon uk-icon-facebook" ></i> Vincula tu Facebook: </div>
+                                                    <div ng-controller="vinculaFBCtrl">
+                                                        <br>
+                                                        <div class="fb-login-button group" 
+                                                             data-width="100" 
+                                                             data-max-rows="1" 
+                                                             data-size="medium" 
+                                                             data-button-type="login_with" 
+                                                             data-show-faces="false" 
+                                                             data-auto-logout-link="false" 
+                                                             data-use-continue-as="false"
+                                                             data-scope="public_profile, email"
+                                                             onlogin="checkFBLinkState();"
+                                                             > 
+                                                        </div>
+                                                    </div>
+                        
+                                                </li>-->
+
+                        <li ng-if="userSes.tipoUsuario == '3' && !userSes.completo" class="uk-nav-divider"></li>
+                        <li ng-if="userSes.tipoUsuario == '3' && !userSes.completo">
+                            <a href="#/complementRoomie">
+                                <i class="uk-icon-warning"></i>
+                                Completar Perfil
+
+                            </a>
+                        </li>
+                        <li class="uk-nav-divider"></li>
+
+
+                        <li  ng-if="userSes.tipoUsuario == '4' && (user.client.length == 0 || user.client == undefined)">
+
+                            <button class="enviarsolicitud uk-align-center" uk-toggle="target: #id-ban-message">
+                                <i class="uk-icon-money"></i>
+                                Activar cobros de pagos de Roomies
+                            </button> 
+
+                        </li>
+                        <li ng-if="userSes.tipoUsuario == '3' || userSes.tipoUsuario == '4'">
+                            <button ng-click="irValidar()" class="enviarsolicitud uk-align-center">
+                                <i class="uk-icon-phone-square"></i>
+                                Valida número telefónico
+                            </button> 
+                        </li>
+
+                        <li ng-if="userSes.tipoUsuario == '4' && user.client.length > 0 && user.client[0].activo == false">
+                            <a href="#/creaCliente">
+                                <i class="uk-icon-money"></i>
+                                Agregar CLABE Interbancaria (Sólo México)
+
+                            </a>
+                        </li>
+
+                        <li ng-if="userSes.tipoUsuario == '4' && user.client.length > 0 && user.client[0].activo == true">
+                            <a href="#/pendientes">
+                                <i class="uk-icon-dollar"></i>
+                                Saldo
+
+                            </a>
+                        </li>
+                        <li class="uk-nav-divider"></li>
+
+                        <li ng-if="userSes.tipoUsuario == '3' && userSes.completo">
+                            <p>No hay acciones</p>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--MODAL-->
+    <div id="id-ban-message" class="modal" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-custom">
+
+            <p class="uk-width-1-1 uk-button uk-button-default uk-modal-close cerrarmodal">X</p>
+            <div class="uk-modal-title">
+
+                <div class="textmodal">
+                    <div class="fecha">
+                        <figure class="uk-text-center" style="float: left;">
+                            <img src="/img/marker_red.png" alt="" width="100">
+                        </figure>
+                    </div>
+                    <div class="name">Activar cobros de pagos de Roomies</div>
+                    <div class="username"> 
+                        Para activar esta función necesitas aceptar los  <a href="#/terminos">Términos y condiciones</a>
+                    </div>
+                </div>
+                <div class="uk-clearfix"></div>
+
+                <br><br>
+                <form  class="uk-form" >
+
+                    <div>
+                        <p class="aceptoterminos"><input  ng-model="aceptaterminos" value="acepto" class="uk-radio" type="radio" name="radio2">Acepto <a href="#/terminos">Términos y condiciones</a></p>
+                    </div> 
+
+
+                    <p class="uk-text-right btn-modal">
+
+                        <button ng-click="aceptarTerminos()"  class="uk-button uk-button-success uk-modal-close" type="submit">Activar</button>
+                    </p>
+                </form>
+
+
+
+            </div>
+        </div>  
+    </div> 
+</section>

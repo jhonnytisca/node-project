@@ -1,0 +1,41 @@
+<section  class="uk-section uk-section-small uk-background-cover uk-background-top-center" style="margin-top: -111px; padding-top: 145px;">
+    <div class="uk-container uk-container-small">
+ 
+         <div class="uk-grid uk-grid-small uk-text-center">
+            <div class="uk-width-1-6@s"></div>
+            <div class="uk-width-2-3@s">
+                <h3 class="nomarginb">Edita socio:</h3>
+                <h4 class="infohome">Edita tu información básica</h4>
+            </div>
+            <div class="uk-width-expand"></div>
+        </div>
+        <div ng-controller="editResponsableCtrl"  class="uk-grid uk-grid-small">
+
+            <!-- Contact Form -->
+            <form novalidate name="form"  ng-submit="edit(form, user)" class="uk-form uk-width-1-1 bx_formulario">
+
+                <div class="uk-width-1-1">
+                    <b>Sexo:
+                        <span ng-if="user.sexo == 'M'" id = "spanSexo" value="{{user.sexo}}">Masculino</span>
+                        <span ng-if="user.sexo == 'F'" id = "spanSexo" value="{{user.sexo}}">Femenino</span>
+                    </b>
+                    <div class="uk-width-1-1@m"><textarea class="uk-textarea" ng-model="user.descripcion" name="descripcion" placeholder="Acerca de mí..." rows="10" maxlength="500"></textarea></div>
+
+                </div>
+
+
+                <br><br>
+                <div class="uk-grid-medium uk-text-center" uk-grid>
+                    <div class="uk-width-1-1">
+                      <button id="botonSubmit" ng-disabled="form.$invalid" class="nomargint" type="submit" name="submitName" >Actualizar</button>
+                    </div>
+                </div>
+
+                <br><br>
+            </form>
+
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html ng-app="rotwApp">
+    <head>
+        <!--ng-bind="metaservice.metaTitle()"-->
+        <title >Roomies of the World</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="Roomies of the world - Viviendas compartidas" />
+
+        <!--FACEBOOK SHARE-->
+        <!--<meta property="og:url"                 name="url"  content="{{ metaservice.metaUrl() }}" />-->
+        <meta property="og:url"                 name="url"  content="https://www.roomiesoftheworld.com" />
+        <meta property="og:type"                content="article" />
+        <!--        <meta property="og:title"               name="titleT" content="{{ metaservice.metaTitleT() }}" />
+                <meta property="og:description"         name="description"    content="{{ metaservice.metaDescription() }}" />-->
+        <meta property="og:title"               name="titleT" content="Roomies Of The World 🌍" />
+        <meta property="og:description"         name="description"    content="Encuentra un hogar a tu medida con Roomies a tu medida" />
+        <meta property="og:site_name"           name="title" content="https://www.roomiesoftheworld.com">
+        <meta property="og:locale" content="es_MX">
+        <meta property="fb:app_id" content="110407259656579">
+        <meta property="og:image"             name="image"  content="https://www.roomiesoftheworld.com/img/logo.png" />
+
+        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <link rel="stylesheet" href="css/custom-style.css" />
+
+        <!--FONTAWESOME-->
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+        <link id="data-uikit-theme" rel="stylesheet" href="css/uikit.docs.min.css">
+
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        
+   
+
+        <!--OPENPAY-->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script type="text/javascript" src="https://openpay.s3.amazonaws.com/openpay.v1.min.js"></script>
+        <script type='text/javascript' src="https://openpay.s3.amazonaws.com/openpay-data.v1.min.js"></script>
+
+        <!--UNDERSCORE-->
+        <script type="text/javascript" src="js/underscore-min.js"></script>
+
+        <!--PAYPAL-->
+        <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4 data-log-level="info"></script>
+
+        <!--ANGULAR-->
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/angular-route.min.js"></script>
+
+        <!--SATELLIZER-->
+        <script type="text/javascript" src="js/satellizer.js"></script>
+
+        <!--CRYPTO-->
+        <script type="text/javascript" src="js/aes.js"></script>
+        <script type="text/javascript" src="js/mode-ecb.js"></script>
+
+
+        <!--
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+        -->
+        <!--SCRIPTS-->
+        <script type="text/javascript" src="app/viewTemplates.js"></script>
+
+        <script type="text/javascript" src="app/controllers/accesoCtrl.js"></script>
+        <script type="text/javascript" src="app/services/facebookService.js"></script>
+        <script type="text/javascript" src="app/controllers/viviendaCtrl.js"></script>
+        <script type="text/javascript" src="app/controllers/usuarioCtrl.js"></script>
+        <script type="text/javascript" src="app/controllers/utilsCtrl.js"></script>
+        <script type="text/javascript" src="app/controllers/mensajeCtrl.js"></script>
+        <script type="text/javascript" src="app/controllers/cCtrl.js"></script>
+        <script type="text/javascript" src="app/services/catalogueService.js"></script>
+        <script type="text/javascript" src="app/services/viviendaService.js"></script>
+        <script type="text/javascript" src="app/services/usuarioService.js"></script>
+        <script type="text/javascript" src="app/services/pagerService.js"></script>
+        <script type="text/javascript" src="app/services/contractService.js"></script>
+        <script type="text/javascript" src="app/services/firebaseService.js"></script>
+        <script type="text/javascript" src="app/services/logService.js"></script>
+        <script type="text/javascript" src="app/services/metaService.js"></script>
+
+
+        <!--PLEASE WAIT-->
+        <link rel="stylesheet" href="css/please-wait.css">
+        <script src="js/please-wait.min.js"></script>
+        <link rel="stylesheet" href="css/spinkit.css">
+        <script type="text/javascript" src="js/loading.page.js"></script>
+
+        <!--SOCKET-->
+        <script src="/socket.io/socket.io.js"></script>
+
+        <!--gmaps-->
+        <link href="css/gmaps.css" rel="stylesheet">
+        <script src="api/gmaps/mainMaps.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq-IC1vm5Y2BEHW2jnrnkXJEkzIfyRZG0&libraries=places,geometry"></script> 
+
+
+        <!-- ADS -->
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function(f, b, e, v, n, t, s)
+            {if (f.fbq)return; n = f.fbq = function(){n.callMethod?
+                    n.callMethod.apply(n, arguments):n.queue.push(arguments)};
+            if (!f._fbq)f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)}(window, document, 'script',
+                    'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '2807504849503504');
+            fbq('track', 'PageView');
+            
+         </script>
+
+        <!-- End Facebook Pixel Code -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-185966465-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+            dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-185966465-1');
+        </script>
+
+
+
+    </head>
+
+    <body>
+        <header class="uk-section uk-section-small uk-background-cover uk-height-viewport" style="background-image: url(images/home-bg.jpg);">
+            <div class="uk-container uk-container-small">
+                <nav class="uk-navbar-container uk-navbar-transparent uk-flex-middle" uk-navbar>
+                    <a class="uk-navbar-brand" href="#/inicio">
+                        <img style="height: 40px;" src="images/logo.png" alt="Roomies of the World">
+                    </a>
+                    <div ng-controller="headerCtrl" class="uk-navbar-right">
+
+                        <ul  class="uk-navbar-nav uk-visible@s">
+                            <li>
+                                <a href="#/viviendas">Viviendas</a>
+                            </li>
+                            <li ng-if="!userSes" >
+                                <a href="#/login">Iniciar sesión</a>
+                            </li>
+                            <li ng-if="userSes != false" >
+                                <a >Opciones</a>
+                                <div  class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li>
+                                            <a href="#/bandeja">Bandeja </a>
+                                        </li>
+                                        <li>
+                                            <a href="#/perfil">Mi Perfil</a>
+                                        </li>
+                                        <li ng-if="userSes.tipoUsuario == '4'" ><a href="#/altaVivienda">Registrar Vivienda</a></li>
+                                        <li ng-if="userSes.tipoUsuario == '4'" ><a href="#/misViviendas">Mis Viviendas</a></li>
+                                        <li ng-if="userSes.tipoUsuario == '3'" ><a href="#/miHogar">Mi Hogar</a></li>
+                                        <li ng-if="userSes.tipoUsuario == '3'" ><a href="#/misAplicaciones">Mis Aplicaciones</a></li>
+                                        <li ng-if="userSes.tipoUsuario == '1'" ><a href="#/altaSupervisor" >Registra Super</a></li>
+                                        <li ng-if="userSes.tipoUsuario == '1'" ><a href="#/altaResponsable">Registra Anfitrión</a></li>
+                                        <li ng-if="userSes.tipoUsuario == '2'" ><a href="#/aprobar">Aprobar Viviendas</a></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li ng-if="userSes != false" >
+                                <a ><i class="uk-icon-bell"></i> <span ng-if="notis.length > 0" class="notificacion">{{notis.length}}</span></a>
+                                <!--<i class="uk-icon-bell-o"></i>--> 
+                                <div  class="uk-navbar-dropdown">
+                                    <ul ng-if="notis != ''"  class="uk-nav uk-navbar-dropdown-nav">
+                                        <li ng-repeat="x in notis" class="notisClass">
+                                            <a ng-if="!x.seen" ng-click="leerNotificacion(x._id);" href="#/{{x.link}}">{{x.content}} </a>
+                                        </li>
+
+                                    </ul>
+                                    <ul ng-if="notis.length == 0 || notis == undefined"  class="uk-nav uk-navbar-dropdown-nav">
+                                        <li><a>Sin Notificaciones</a></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+
+                            <li ng-if="userSes != false" >
+                                <a ng-controller="logoutCtrl" ng-click="logout();">Salir</a>
+                            </li>
+                        </ul>
+                        <ul  class="uk-navbar-nav uk-hidden@s">
+                            <li ng-if="userSes != false" >
+                                <a ><i class="uk-icon-bell"></i> <span ng-if="notis.length > 0" class="notificacion">{{notis.length}}</span></a>
+                                <!--<i class="uk-icon-bell-o"></i>--> 
+                                <div  class="uk-navbar-dropdown">
+                                    <ul ng-if="notis != ''"  class="uk-nav uk-navbar-dropdown-nav">
+                                        <li ng-repeat="x in notis">
+                                            <a ng-if="!x.seen" ng-click="leerNotificacion(x._id);" href="#/{{x.link}}">{{x.content}} </a>
+                                        </li>
+
+                                    </ul>
+                                    <ul ng-if="notis.length == 0 || notis == undefined"  class="uk-nav uk-navbar-dropdown-nav">
+                                        <li><a>Sin Notificaciones</a></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <a uk-navbar-toggle-icon="" href=".canvasClass" uk-toggle="" class="uk-navbar-toggle uk-hidden@s uk-navbar-toggle-icon uk-icon"></a>
+                        <div id="offcanvas" class="canvasClass" uk-offcanvas="overlay: true">
+                            <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+
+                                <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+                                    <li>
+                                        <a href="#/viviendas">Viviendas</a>
+                                    </li>
+                                    <li ng-if="!userSes" class="uk-active"><a href="#/login">Iniciar Sesión</a></li>
+                                    <li ng-if="userSes != false" class="uk-parent">
+                                        <a href="#">Opciones</a>
+                                        <ul class="uk-nav-sub">
+                                            <li class="uk-nav-divider"></li>
+                                            <li>
+                                                <a href="#/bandeja">Bandeja </a>
+                                            </li>
+                                            <li>
+                                                <a href="#/perfil">Mi Perfil</a>
+                                            </li>
+
+                                            <li ng-if="userSes.tipoUsuario == '4'" ><a href="#/altaVivienda">Registrar Vivienda</a></li>
+                                            <li ng-if="userSes.tipoUsuario == '4'" ><a href="#/misViviendas">Mis Viviendas</a></li>
+                                            <li ng-if="userSes.tipoUsuario == '3'" ><a href="#/miHogar">Mi Hogar</a></li>
+                                            <li ng-if="userSes.tipoUsuario == '3'" ><a href="#/misAplicaciones">Mis Aplicaciones</a></li>
+                                            <li ng-if="userSes.tipoUsuario == '1'" ><a href="#/altaSupervisor" >Registra Super</a></li>
+                                            <li ng-if="userSes.tipoUsuario == '1'" ><a href="#/altaResponsable">Registra Anfitrión</a></li>
+                                            <li ng-if="userSes.tipoUsuario == '2'" ><a href="#/aprobar">Aprobar Viviendas</a></li>
+
+
+                                        </ul>
+                                    </li>
+                                    <li ng-if="userSes != false"><a ng-controller="logoutCtrl" ng-click="logout();">Cerrar sesión</a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!---------------------------------------------------------------------------------------------->
+
+        <div  ng-view></div>
+
+
+        <!---------------------------------------------------------------------------------------------->
+
+        <footer class="uk-section uk-background" style="background: #513cf9;">
+            <div class="uk-container uk-container-small">
+                <div class="uk-grid-collapse" uk-grid>
+                    <div class="uk-width-2-3@m contacto">
+                        <div class="logo">
+                            <img src="images/logo.png" />
+                        </div>
+                        <p>Ciudad de México, México</p>
+                        <p>support@roomiesoftheworld.com</p>
+
+                        <a id="linkTerminos" href="/#/terminos"><p>Términos y condiciones</p></a>
+                        <a id="linkTerminos" href="/#/aviso"><p>Aviso de privacidad</p></a>
+                    </div>
+                    <div class="uk-width-expand@m socials">
+                        <h3>Siguenos en nuestras Redes sociales:</h3>
+                        <ul>
+                            <li>
+                                <a href="https://www.facebook.com/RoomieMatch">
+                                    <img src="images/icons/facebook.png" alt="Facebook" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/roomiesoftheworld/">
+                                    <img src="images/icons/instagram.png" alt="Instagram" />
+                                </a>
+                            </li>
+                            <!--                            <li>
+                                                            <a href="#">
+                                                                <img src="images/icons/youtube.png" alt="Youtube" />
+                                                            </a>
+                                                        </li>-->
+
+
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+    <noscript>
+    <img height="1" width="1" 
+         src="https://www.facebook.com/tr?id=2807504849503504&ev=PageView
+         &noscript=1"/>
+    </noscript>
+
+</html>

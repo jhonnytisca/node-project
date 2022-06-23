@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2018 Carlos Cielo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+   Carlos Cielo - initial API and implementation and/or initial documentation
+-->
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>          
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--BOOTSTRAP FORMHELPERS-->
+<link rel="stylesheet" href="css/bootstrap-formhelpers.min.css" />
+<script type="text/javascript" src="js/bootstrap-formhelpers.min.js"></script>
+<link rel="stylesheet" href="css/calendarios.css" />
+
+
+<script>
+
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46) {
+            return false;
+        }
+        return true;
+    }
+
+   
+</script>    
+
+
+<script src="js/rooms.js"></script>
+
+<section class="uk-section uk-section-small uk-background-cover uk-background-top-center" style="margin-top: -111px; padding-top: 145px;">
+
+    <div ng-controller="editCuartoCtrl" class="uk-container uk-container-small">
+
+        <div class="uk-width-1-1 uk-text-center">
+            <h3 class="nomarginb">Registro de nuevo cuarto:</h3>
+            <h4 class="infohome">Llene los datos solicitados para dar de alta su cuarto</h4>
+        </div>
+        <div class="uk-width-expand"></div>
+
+
+        <input type="hidden" id="user" value="{{user}}">
+        <!-- Contact Form -->
+        <form novalidate name="form" class="uk-form" ng-submit="edita(form, cuarto)"  enctype="multipart/form-data">
+
+            <hr class="mediumargin">
+            <div class="uk-grid uk-flex-bottom" uk-grid>
+
+                <div  class="uk-width-1-1@m">
+                    <input ng-model="cuarto.titulo" class="roomTitulo uk-input" type="text" name="titulo" placeholder="Título Cuarto"  value="" maxlength="50" />
+                    <div ng-show="$tituloTouched">
+                        <span class="msjValid" ng-show="form.titulo.$invalid">Por favor ingresa un título.</span>
+                    </div> 
+                    <textarea ng-model="cuarto.descripcion" class= "roomDescripcion uk-input" name="descripcion" placeholder="Descripción" rows="5" maxlength="500"></textarea>
+                    <div class=" input-group">
+                        <span class="input-group-addon">$</span>
+                        <input ng-model="cuarto.precio" class="roomPrecio uk-input" type="text" name="value" placeholder="Precio Renta Cuarto"  value=""  onkeypress="return isNumber(event)"/>
+                    </div>
+                    <div class="input-group">
+                        <input ng-model="cuarto.m2" class="roomM2 uk-input" type="text" name="value" placeholder="Metros Cuadrados "  value=""  onkeypress="return isNumber(event)" maxlength="4"/>
+                        <span class="input-group-addon">m<sup>2</sup></span>
+                    </div>
+                   
+                    <br>
+                   
+                   
+                    <hr class="divisoria">
+                    <br><br>
+                </div>   
+
+
+
+
+
+                <div class="uk-grid-medium" uk-grid>
+                    <div class="uk-width-1-1 uk-text-center">
+                        <input ng-disabled="form.$invalid" class="uk-align-center btn-anadir" id="coolbutton" name="submitName" type="submit" value="Editar Cuarto" />
+
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+
+
+    </div>
+</section>
+
+

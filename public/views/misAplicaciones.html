@@ -1,0 +1,124 @@
+<section  ng-controller="consultarAplicacionesCtrl" class="uk-section uk-section-small">
+    <div class="uk-container uk-container-small">
+
+        <div class="uk-grid uk-grid-small" uk-grid>
+            <div class="uk-width-1-1@m">
+                <div uk-slider="center: false" class="uk-position-relative" style="padding: 0 30px">
+                    <div class="uk-position-relative uk-light">
+                        <ul class="uk-slider-items uk-child-width-1-2@m uk-grid">
+                            <li ng-repeat="x in viviendas" >
+                                <div class="uk-card">
+
+                                    <div class="uk-card-body sidebar">
+
+                                        <img class="uk-align-center nomarginb" src="../../../uploads/{{x.common.portada}}" alt=" " />
+                                        <h4 class="uk-card-title titulosolicitud nomarginb">{{x.common.titulo}} </h4>
+                                        <br>
+                                        <div uk-grid>
+                                            <div class="uk-width-1-3">
+                                                <img class="uk-border-circle user-photo-thum" src="{{x.responsable.avatar}}" alt=""/>
+                                            </div>
+                                            <div class="uk-width-2-3">
+                                                <p class="solicitudp" >{{x.responsable.nombre}} {{x.responsable.primerApellido}} </p> 
+                                                <button ng-click="loadParams(x.common.idResponsable);"  class="uk-button-danger btn-anadir" uk-toggle="target: #modalMensaje" type="button">Mensaje</button>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="subtitle">
+                                            <p class="nomargint nomarginb">{{x.common.direccion}}</p>
+                                            <p ng-if="x.common.rentaCuarto" class="nomargint">Renta por recámara</p>
+                                            <p ng-if="!x.common.rentaCuarto" class="nomargint">${{x.precio}}MXN</p>
+                                        </div>
+                                        <div class="date">{{x.common.altaVivienda}}</div>
+                                        <p class="solicitudp">
+                                            {{x.common.detalle}}
+                                        </p>
+                                        <div ng-if="x.commonRoom!=undefined">
+                                            <h4 class="uk-card-title titulocuarto nomarginb">Cuarto: {{x.commonRoom.titulo}} </h4>
+                                            <img class="uk-align-center nomarginb" src="../../../uploads/{{x.commonRoom.portada}}" alt=" " />
+                                            <p class="solicitudp">
+                                                 {{x.commonRoom.descripcion}}
+                                            </p>
+                                        </div>
+                                            <br>
+                                        
+                                        <div class="bx_disponibilidad">
+                                            <button ng-if="x.aplicacion.status == 2" ng-click="sendApp(x.aplicacion, x.id_house);" type="button">Pagar</button>
+                                            <span style="color: #f0506e;" ng-if="x.aplicacion.status == 3">Expirado</span>
+                                            <button ng-click="loadDetalle(x.common.idVivienda);" type="button">Ver anuncio</button>
+                                            <button ng-click="loadParamsCancel(x.common.idVivienda);" class="uk-button-danger" uk-toggle="target: #modalCancel" type="button">Cancelar Aplicación</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- This is the modal -->
+                                <div id="modalCancel"  class="modal" uk-modal>
+                                    <div class="uk-modal-dialog uk-modal-body modal-custom">
+                                        <p class="uk-width-1-1 uk-button uk-button-default uk-modal-close cerrarmodal">X</p>
+                                        <div class="uk-modal-title">
+
+                                            <div class="textmodal">
+                                                <div class="name">Cancelar aplicación</div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-clearfix"></div>
+                                        <p class="modalp">
+                                            ¿Estás seguro de cancelar tu aplicación para ésta vivienda?
+                                        </p>
+
+                                        <p class="uk-text-right btn-modal">
+
+                                            <button ng-click="cancelarAplicacion();" class="uk-button uk-button-success uk-modal-close" type="submit">Sí</button>
+                                            <button class="uk-button uk-button-danger uk-modal-close " type="submit">No</button>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- FIN ventana modal -->
+
+
+
+                                <!-- This is the modal Message-->
+                                <div ng-controller="initConversationCtrl"  id="modalMensaje" class="modal" uk-modal>
+                                    <div class="uk-modal-dialog uk-modal-body modal-custom">
+                                        <p class="uk-width-1-1 uk-button uk-button-default uk-modal-close cerrarmodal">X</p>
+                                        <div class="uk-modal-title">
+                                            <!--                                            <figure class="uk-text-center" style="float: left;">
+                                                                                            <img src="images/im_perfil_example2.png" alt="">
+                                                                                        </figure>
+                                                                                        <div class="textmodal">
+                                                                                            <div class="fecha">14 Marzo 2018</div>
+                                                                                            <div class="name">Giberto R.</div>
+                                                                                            <div class="username">@usuario123 </div>
+                                                                                            <div class="casa">Casa Amor</div>
+                                                                                        </div>-->
+                                        </div>
+                                        <div class="uk-clearfix"></div>
+
+
+                                        <form class="uk-form" >
+
+                                            <div>
+                                                <textarea ng-model="mensaje" class="uk-textarea" cols="10" required placeholder="Mensaje"></textarea>
+                                            </div> 
+
+                                            <p class="uk-text-right btn-modal">
+
+                                                <button ng-click="enviar()"class="uk-button uk-button-success uk-modal-close" type="submit">Enviar</button>
+                                            </p>
+                                        </form>
+
+
+
+                                    </div>
+                                </div><!-- FIN ventana modal -->
+                            </li>   
+                        </ul>
+
+                    </div>
+                    <a style="left: -25px" class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                    <a style="right: -25px" class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

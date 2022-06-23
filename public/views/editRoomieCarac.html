@@ -1,0 +1,69 @@
+
+<section  class="uk-section uk-section-small uk-background-cover uk-background-top-center" style=" margin-top: -111px; padding-top: 145px;">
+    <div class="uk-container uk-container-small">
+   
+         <div class="uk-grid uk-grid-small uk-text-center">
+            <div class="uk-width-1-6@s"></div>
+            <div class="uk-width-2-3@s">
+                <h3 class="nomarginb">Edita características</h3>
+                <h4 class="infohome">Edita tus gustos y carácterísticas</h4>
+            </div>
+            <div class="uk-width-expand"></div>
+        </div>
+        
+        <div ng-controller="editRoomieCaracCtrl" >
+            <!-- Contact Form -->
+            <form novalidate name="form"  ng-submit="edita(form, user)"  enctype="multipart/form-data">
+                <div class="uk-grid">     
+                <div class="uk-width-1-1">
+
+                        <fieldset data-uk-margin>
+                            <legend><b>Características: </b></legend>
+                            <div class="my-overflow">
+
+                                <input class="caracRClass uk-radio" type="checkbox" value="emprendedor.png" /><label class="caracRLabel">Emprendedor</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="estudiante.png" /><label class="caracRLabel">Estudiante</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="godinez.png" /><label class="caracRLabel">Godinez</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="deportista.png" /><label class="caracRLabel">Deportista</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="lector.png" /><label class="caracRLabel">Lector</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="viajero.png" /><label class="caracRLabel">Viajero</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="sociable.png" /><label class="caracRLabel">Sociable</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="cinefilo.png" /><label class="caracRLabel">Cinéfilo</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="artista.png" /><label class="caracRLabel">Artista</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="ambiental.png" /><label class="caracRLabel">Ambiental</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="congato.png" /><label class="caracRLabel">Con Gato</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="conperro.png" /><label class="caracRLabel">Con Perro</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="gamer.png" /><label class="caracRLabel">Gamer</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="cool.png" /><label class="caracRLabel">Cool</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="zen.png" /><label class="caracRLabel">Espiritual-Zen</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="fiestero.png" /><label class="caracRLabel">Fiestero</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="foodlover.png" /><label class="caracRLabel">Food lover</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="gay.png" /><label class="caracRLabel">Gay</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="hipster.png" /><label class="caracRLabel">Hipster</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="petlover.png" /><label class="caracRLabel">Pet Lover</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="pulcro.png" /><label class="caracRLabel">Pulcro</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="serio.png" /><label class="caracRLabel">Serio</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="vegan.png" /><label class="caracRLabel">Vegano</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="healthy.png" /><label class="caracRLabel">Healthy</label><br />
+                                <input class="caracRClass uk-radio" type="checkbox" value="fitness.png" /><label class="caracRLabel">Fitness</label><br />
+                            </div>
+                        </fieldset>                                                         
+
+                    </div>  
+
+                
+              
+               <div class="uk-width-1-1">
+
+                    <input class="uk-align-center btn-anadir" id="coolbutton" name="submitName" type="submit" value="Actualizar Gustos" />                        
+                </div>
+            
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+

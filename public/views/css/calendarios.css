@@ -1,0 +1,40 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 17/08/2017, 10:29:49 AM
+    Author     : Carlos Cielo
+*/
+
+a.next{
+    cursor: pointer;
+    position: static !important;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 2px;
+    color: #98c593 !important;
+    font-weight: bold;
+    font-size: 10px !important;
+
+}
+
+
+/* TELEPHONE */
+.intl-tel-input {
+    display: table-cell;
+}
+.intl-tel-input .selected-flag {
+    z-index: 4;
+}
+.intl-tel-input .country-list {
+    z-index: 5;
+}
+.input-group .intl-tel-input .form-control {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 0;
+}

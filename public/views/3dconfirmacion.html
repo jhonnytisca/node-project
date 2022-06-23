@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2019 Carlos Cielo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+   Carlos Cielo - initial API and implementation and/or initial documentation
+-->
+
+
+<section class="uk-section uk-section-small uk-background-cover uk-background-top-center" style="margin-top: -111px; padding-top: 145px;">
+    <div ng-controller="3dconfirmcacionCtrl" class="uk-container uk-container-small">
+        <div class="uk-grid uk-grid-small">
+            
+            <div id="div1" class="uk-width-1-1@m uk-text-center" >
+               
+                <h3>Cargando</h3>
+                 <div uk-spinner="ratio: 10"></div>
+             
+                <h2>Espere un momento</h2>
+            </div>
+            <div id="div2" class="uk-width-1-1@m uk-text-center" hidden>
+               
+                <h3>Pago Realizado</h3>
+                <img class="checkcross" src="img/correct.png" value="1">
+             
+                <h2>Recuerda NO cerrar la ventana en donde hiciste el pago, se te redireccionará automáticamente</h2>
+            </div>
+             <div id="div3" class="uk-width-1-1@m uk-text-center" hidden>
+               
+                <h3>Pago NO aceptado</h3>
+                <img class="checkcross" src="img/error.png" value="1">
+               
+                <h2>Contacte a su banco o intente con otra tarjeta </h2>
+            </div>
+        </div>
+</section>

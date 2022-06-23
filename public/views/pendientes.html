@@ -1,0 +1,129 @@
+<!--BOOTSTRAP FORMS--> 
+<link rel="stylesheet" href="css/bootstrap-formhelpers.min.css" />
+
+<section ng-controller="saldoCtrl"  class="uk-section uk-section-small">
+
+    <div class="uk-container uk-container-small">
+
+
+        <div  ng-if="pagos.length == 0"  class="uk-grid uk-grid-small" uk-grid>
+
+            <!-- Termina panel izquierdo - Inicia panel central -->
+            <div class="uk-width-1-1@m">
+                <!--<h3 class="uk-text-center panel-title nomarginb">Mi saldo @{{usuario.nombreUsuario}}</h3>-->
+                <h3 class="panel-title">Sin transferencias pendientes</h3>
+                <div  class="uk-align-center ng-scope">
+
+                    <h2><i class="uk-icon-clock-o"></i> En este momento no tiene transferencias a depositar a su cuenta</h2>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div ng-if="pagos.length > 0" class="uk-grid uk-grid-small" uk-grid>
+
+            <!-- Termina panel izquierdo - Inicia panel central -->
+            <div  class="uk-width-1-1@m">
+                <!--<h3 class="uk-text-center panel-title nomarginb">Mi saldo @{{usuario.nombreUsuario}}</h3>-->
+                <h3 class="panel-title">Mi saldo</h3>
+                <button class="enviarsolicitud uk-align-center" uk-toggle="target: #id-fondos-modal">
+                    <i class="uk-icon-money"></i>
+                    Transferir ${{totalBalance}}MXN a mi cuenta
+                </button> 
+
+            </div>
+            <div class="uk-width-1-1@m">
+                <table class="uk-table">
+                    <!--<caption>Saldo:</caption>-->
+
+                    <thead>
+                        <tr>
+                            <!--<th>ID Pago</th>-->
+                            <th>Detalle</th>
+                            <th>Roomie Holder</th>
+                            <th>Fecha</th>
+                            <th>Status</th>
+
+                            <th>Monto a depositar</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td>TOTAL:</td>
+                            <!--<td></td>-->
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                            <td>${{totalBalance}}MXN</td>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr ng-repeat="p in pagos">
+                            <!--<td>{{p._id}}</td>-->
+                            <td>{{p.transaction[0].description}}</td>
+                            <td>{{p.card[0].holder_name}}</td>
+                            <td>{{p.created_at}}</td>
+                            <td>Listo</td>
+
+                            <td>${{p.montoD}}MXN</td>
+                        </tr>
+
+                    </tbody>
+                </table>                              
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <!--MODAL-->
+    <div id="id-fondos-modal" class="modal" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-custom">
+
+            <p class="uk-width-1-1 uk-button uk-button-default uk-modal-close cerrarmodal">X</p>
+            <div class="uk-modal-title">
+
+                <div class="textmodal">
+                    <div class="fecha">
+                        <figure class="uk-text-center" style="float: left;">
+                            <img src="/img/marker_blue.png" alt="" width="100">
+                        </figure>
+                    </div>
+                    <div class="name">Transferir fondos</div>
+                    <div class="username"> 
+                        Para transferir fondos a tu cuenta necesitas aceptar nuestros  <a href="#/terminos">Términos y condiciones</a>
+                        <p>RECUERDA QUE SE COBRAN $8.00MXN por transferencia interbancaria.</p>
+                    </div>
+                </div>
+                <div class="uk-clearfix"></div>
+
+                <br><br>
+                <form  class="uk-form" >
+
+                    <div>
+                        <p class="aceptoterminos"><input  ng-model="aceptaterminos" value="acepto" class="uk-radio" type="radio" name="radio2">Acepto <a href="#/terminos">Términos y condiciones</a></p>
+                    </div> 
+
+
+                    <p class="uk-text-right btn-modal">
+
+                        <button id="botMod" ng-click="aceptarTerminosT()"  class="uk-button uk-button-success uk-modal-close" type="submit" name="submitName" >Transferir</button>
+                    </p>
+                </form>
+
+
+
+            </div>
+        </div>  
+    </div> 
+</section>

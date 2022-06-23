@@ -1,0 +1,24 @@
+<section class="uk-section uk-section-large uk-background-cover uk-background-top-center" style="background-image: url(images/contacto-bg.png); margin-top: -210px; padding-top: 230px;">
+    <div class="uk-container uk-container-small">
+        <div class="uk-grid" style="margin-top: 85px;">
+            <div class="uk-width-1-1 uk-text-center">
+                <h3 style="font-size: 2.5rem;">Introduce el email que tienes registrado para recuperar tu contraseña</h3>
+                <div  ng-controller="sendEmailCtrl" class="bx_formulario">
+                    <form  ng-submit="send()" >
+
+                        <div class="uk-grid uk-grid-small" uk-grid>
+                            <div class="uk-width-1-1">
+                                <input ng-model="email" class="uk-input" type="text" name="email" placeholder="Email" />
+                            </div>
+                            
+                        </div>
+                        <div>
+                            <button type="submit">Enviar correo</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
