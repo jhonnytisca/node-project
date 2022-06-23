@@ -9,6 +9,11 @@
  *    Carlos Cielo - initial API and implementation and/or initial documentation
  */
 
+/* 
+ * Jhonny Tiscareño Ramirez - 2022
+ * New features and corrections.
+ */
+
 //SERVIDOR DE IMAGENES
 
 var express = require('express');
@@ -29,12 +34,12 @@ module.exports = function (app) {
 
     function subirArchivo(req, res) {
 
-        console.log("FILE NAME", req.files.qqfile.originalFilename);
+        //console.log("FILE NAME", req.files.qqfile.originalFilename);
 
 
         req.files.path = req.files.qqfile.path;
-        console.log("QQ PATH  " + req.files.qqfile.path);
-        console.log("REQ PATH  " + req.files.path);
+        //console.log("QQ PATH  " + req.files.qqfile.path);
+        //console.log("REQ PATH  " + req.files.path);
 
 
         var oldpath = req.files.qqfile.path.replace("\\", "/");
@@ -42,23 +47,31 @@ module.exports = function (app) {
         var fechaStr = fecha.getFullYear() + "" + (fecha.getMonth() + 1) + "" + fecha.getDate();
         console.dir("DATE NOW " + fechaStr);
 //        var folder = __dirname + '/uploads/' + fechaStr + '/';
-        var folder = path.join(__dirname, '../../uploads/') + fechaStr + '/';
+        var folder_uploads = path.join(__dirname, '../../uploads/');
+        var folder = folder_uploads + fechaStr + '/';
 
-        if (!fs.existsSync(folder)) {
+        if (!fs.existsSync(folder_uploads)) { //Primero creamos el folder uploads en caso de no existir
+            fs.mkdirSync(folder_uploads);
+        }
+
+        if (!fs.existsSync(folder)) { //Luego creamos el folder de la imagen
             fs.mkdirSync(folder);
         }
 
-        console.dir(req.body);
+        //console.dir(req.body);
 
-        console.dir("DATE NOW " + fecha.getFullYear() + "" + fecha.getMonth() + "" + fecha.getDate());
+        //console.dir("DATE NOW " + fecha.getFullYear() + "" + fecha.getMonth() + "" + fecha.getDate());
 
         var ext = req.files.qqfile.originalFilename.split('.').pop();
-        console.log("EXT::  " + ext);
+        //console.log("EXT::  " + ext);
         //CACHAR PREFIJO
         var fileName = req.body.tipo + generaRandom() + "." + ext;
-        console.log("NUEVO NOMBRE :: " + fileName);
+        //console.log("NUEVO NOMBRE :: " + fileName);
 
         var newpath = folder + fileName;
+
+        //console.log("NUEVO Folder" + newpath)
+        //console.log("VIEJO Folder" + oldpath)
 
         //no dejar espacios o saltos
         var responseData = {success: false, name: fechaStr + '/' + fileName};

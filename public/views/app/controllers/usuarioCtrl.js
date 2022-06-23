@@ -1,3 +1,8 @@
+/* 
+ * Jhonny Tiscareño Ramirez - 2022
+ * New features and corrections.
+ */
+
 var app = angular.module("rotwApp");
 
 
