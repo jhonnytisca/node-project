@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "hardy-canyon-159005",
+  "private_key_id": "b180bcb52a06d987e00b61ad45e934f3b5b86fcf",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQD2E6A/X6NKX3io\nme791jKZMJE+ILUSEHlv1xdZK7UaFMbFdoiOucFvV/A/uRKkAl8Gv+AGknOvnVkY\nk4p7qsjgS9PWFFZXMRiNJQYoyLV/rIyDfy/z3tbTu5E8rFH3GlNbTW37aaxFrjGe\nejZUJ/D9hTfdOuafduVjtRVRLsteajZWnC1OyJohFxxG+ECNqddXBu63jK6q/pue\nUS6fz+ZWAXlbwxzSIs5/BSZQh6uCleJfYYE/ru4KRhnQd9+jSTh27/fR9X9Bp+7s\nSSaX7EAL4juY1/I2Pbj/ZVRRYDa18EMUK7zubcmxmeuZz/WJomrrcpv+dpNygxXf\nUnFIO8jJAgMBAAECggEAC5ueZg7pYYNCalWkl/XIOkC3wUICuKDtUZDIaaztpJbR\nT5RJWc46aTmxPBhLYFA6UlOvyi+TZHfcMZQYJsBGLIp3KjSYZBGNUm8qLLdXFHg7\nwqI3zV24LZG+BqosTadAwmBTLVZtSXYvogWq1Wpy7Eqh+X4jTedqZ7stj8BQ2Jm7\nW3u3tekHOyBm2qSEGsJEZAZr6xhtiKw/eTONtBMLUe/umR88btwqfcLjNwTxQd/z\nHSIPNfL3Ev1rxxyGASw43/768AF8AL9nDRD1Zmgj0N+YyXIfWJ03iRSfl+dpi3a2\nqGMgpz6NEJmZnC3OL2l0YDebsmh7u9VwGzVUL2VYQQKBgQD7R4LZVOogcv1+VYKH\n9PiE23fjGx5gsNbTAQV8iUmjQqVflZRRWjYB4zh76x0w/EqJUpTVleJOY/mnrxTk\n/8afRKsyU6Z2oIIEH1hF5eyHkAdxmu+FzFWOHqZSSoLf+UVTH/B+LK3DauHs/ivs\ng1g7mgweAyjGYwli+9X00Y+FEQKBgQD6sxfnfMSrROHDyFtI8uwacGUw1OsgYhjd\nvA53nXsCR7b6rOYVx8jqGBqW8a3cdbc0sMkqBvGDNXk4/Ywf9/8jIsurszAatCkK\nBYoIiXYTZ9KJUMO3K2HCGf6W/t+Jl1dqaxQIR6y0aIgydsHGQ3kc66GKhpJQCTWN\nklcQ4LSoOQKBgQCvKtzGkHFeCYs5JHcIO/d69luOz/rPQLehBFdEx5ez3ePWzDlG\ntPJtQm6/w9jnqxhyvkTO19uY9gy1nlGcicl2gbIuNS4YCDBam1c38t5+aiMmSPGs\nfhMuLaOYPiUZ6XUwS1WlP5QqZDn2sgEAsVcyxWKpEV69XZDPletC7Ut1YQKBgQDI\n3Aze71wzTLEFx9U7kUYRuNOaWD06aN47aZy9wXL41LSKC1UdRkB3LnC/V0tRQw9S\nLAJApeeClKlXO+20/2FvqUU9gAeenZHz8ZQyWtA7pAdO9WKZsyxT87fDCtnWx2bG\nYJxgNeztboMQy41daFn1DeUTs9YuQfKiRwlzAFY+IQKBgDY3RlLyMLbrButoayDw\naAyddZeLpFXm6AMvbfeW6/1fom5woNtxOVO81mhWf1pwFt10sbkGA3TTfzaqgHzp\nfSvN8VLDUyel0DJmLinV55dXCj1/LDso5XP8mbGxfaC8xOxQtKLeUfeGwcKvndRA\n7sbCzglRSA0eiaU8e6xLVH32\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-zdkfx@hardy-canyon-159005.iam.gserviceaccount.com",
+  "client_id": "111981540210578531644",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-zdkfx%40hardy-canyon-159005.iam.gserviceaccount.com"
+}
