@@ -9,31 +9,14 @@
  *    Carlos Cielo - initial API and implementation and/or initial documentation
  */
 
+/*
+ * Jhonny Tiscareño Ramirez - 2022
+ * New features and corrections.
+ */
+
 var app = angular.module("rotwApp");
 
 app.service('logService', function ($location, $http, usuarioService) {
-var setVisita = function (CassObject) {
-    
-   console.log("LOG SERVICE");
-    if (usuarioService.getSessionUser().idUsuario !== undefined) {
-       CassObject.idUsuario =usuarioService.getSessionUser().idUsuario;
-    }
-    
-    return $http.post("/cass/visit", CassObject)
-           .success(function (data) {
-
-        return data;
-        }, function (error) {
-
-        console.info("------------------ERROR SERVICIO CASS-----------------------");
-                console.info(error);
-                return error;
-        });
-
-
-};
-        return {
-        setVisita: setVisita
-
-                };
-            });
+                return {};
+        }
+);

@@ -1,3 +1,8 @@
+/*
+ * Jhonny Tiscareño Ramirez - 2022
+ * New features and corrections.
+ */
+
 var app = angular.module("rotwApp");
 
 //var crypto = require('crypto');
@@ -244,78 +249,7 @@ app.service('usuarioService', function ($auth, $http, CONSTANT) {
 
                 });
 
-    };
-
-    var manageDevices = function (cassObject) {
-
-        //idUser, f_token
-        var deviceList = [];
-
-        return $http.get("/cass/device/" + cassObject.idUser)
-                .success(function (device) {
-
-                    console.dir(device);
-
-                    if (device === "") {
-
-                        console.log("IF NO EXISTS, SAVE");
-
-                        $http.post("/cass/device", cassObject)
-                                .success(function (data) {
-
-                                    console.log("REGISTERED");
-                                    return data.devices;
-                                }, function (error) {
-
-                                    console.info("------------------ERROR SERVICIO CASS-----------------------");
-                                    console.info(error);
-                                    return error;
-                                });
-
-
-
-                    } else {
-
-                        console.log("EXISTS, TRY TO PUSH");
-
-                        //VALIDATE IF DEVICE IS LINKED TO USER
-                        for (var i = 0; i < device.devices.length; i++) {
-
-//                            if (device.devices[i] === cassObject.f_token) {
-                                cassObject.idSession = device.id_session;
-                                $http.put("/cass/device", cassObject)
-                                        .success(function (data) {
-
-                                            console.log("PUSH DEVICE");
-
-                                            return data;
-                                        }, function (error) {
-
-                                            console.info("------------------ERROR SERVICIO CASS-----------------------");
-                                            console.info(error);
-                                            return error;
-                                        });
-
-                                break;
-                            }
-//                        }
-                       // return device;
-                    }
-
-
-
-                }, function (error) {
-
-                    console.info("------------------ERROR SERVICIO CASS-----------------------");
-                    console.info(error);
-
-                    return error;
-
-                });
-
-    };
-    
-    
+    };  
     
      var enviarCorreo = function (correo) {
 
@@ -350,7 +284,6 @@ app.service('usuarioService', function ($auth, $http, CONSTANT) {
         setFBProfile: setFBProfile,
         getCheckInRoomie: getCheckInRoomie,
         getCheckInHost: getCheckInHost,
-        manageDevices: manageDevices,
         sendPrecarga:sendPrecarga,
         getPrecarga:getPrecarga,
         enviarCorreo:enviarCorreo

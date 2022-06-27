@@ -1,3 +1,9 @@
+/*
+ * Jhonny Tiscareño Ramirez - 2022
+ * New features and corrections.
+ */
+
+
 var app = angular.module("rotwApp");
 var viviendasGlobal = [];
 
@@ -3674,70 +3680,6 @@ app.controller('patronCtrl', function ($scope, $http, $location, viviendaService
                 $scope.patron = listaViviendas;
 
             });
-
-
-//    var CassObject = new Object();
-//    CassObject.paramUrl = $location.url();
-//    if (usuarioService.getSessionUser().idUsuario === undefined) {
-//       CassObject.idUsuario =usuarioService.getSessionUser().idUsuario;
-//    }
-//    
-//            $http.post("/cass/visit", CassObject).
-//            then(function (data) {
-//
-//
-//            });
-
-    var CassObject = new Object();
-    CassObject.parametro = "parametro"
-
-//     $http.post("/cass/device", CassObject)
-//            .success(function (data) {
-//
-//        return data;
-//        }, function (error) {
-//
-//        console.info("------------------ERROR SERVICIO CASS-----------------------");
-//                console.info(error);
-//                return error;
-//        });
-
-
-//         $http.get("/cass/device").
-//            then(function (response) {
-//
-//                console.dir(response);
-//
-//            }, function (error) {
-//
-//                console.info("-----------------ERROR CASS------------------------");
-//                console.info(error);
-//            });
-//            
-
-
-//     $http.put("/cass/device", CassObject)
-//            .success(function (data) {
-//
-//        return data;
-//        }, function (error) {
-//
-//        console.info("------------------ERROR SERVICIO CASS-----------------------");
-//                console.info(error);
-//                return error;
-//        });        
-
-    var CassObject = new Object();
-    CassObject.paramUrl = $location.url();
-    var visita = logService.setVisita(CassObject);
-
-
-
-
-//    var CassObject1 = new Object();
-//    CassObject1.idUser = 30;
-//    CassObject1.f_token = "F_TOKEN2";
-//    var dispositivos = usuarioService.manageDevices(CassObject1);
 
 
     $scope.loadDetalle = function (idViviendaView) {

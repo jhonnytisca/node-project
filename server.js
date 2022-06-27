@@ -1,3 +1,7 @@
+/*
+ * Jhonny Tiscareño Ramirez - 2022
+ * New features and corrections.
+ */
 
 // Inicialización
 var express = require('express');
@@ -100,7 +104,6 @@ require('./app/mongoRoutes.js')(app);
 require('./app/openpay/appOpenPay.js')(app);
 require('./app/imgServer/imgServer.js')(app);
 require('./app/firebase/firebaseApp.js')(app);
-require('./app/cassandra/cassRoutes.js')(app);
 require('./app/jobs/agendaApp.js')(app);
 require('./app/twilio/twilioApp.js')(app);
 
